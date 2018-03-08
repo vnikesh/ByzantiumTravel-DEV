@@ -3,6 +3,13 @@ from django.contrib.auth.models import User
 import decimal
 # Create your models here.
 
+
+class Region (models.Model):
+    name = models.CharField(max_length=100, null=False)
+    description = models.CharField(max_length=500, null=False)
+
+
+
 class Location (models.Model):
     name = models.CharField(max_length=200, null=False)
     long = models.DecimalField(max_digits=50, decimal_places=2, null=False)
@@ -20,11 +27,6 @@ class Visitor (models.Model):
     name = models.CharField(max_length=200, null=False)
     language = models.CharField(max_length=3, null=False)
 
-
-
-class Region (models.Model):
-    name = models.CharField(max_length=100, null=False)
-    description = models.CharField(max_length=500, null=False)
 
 
 
