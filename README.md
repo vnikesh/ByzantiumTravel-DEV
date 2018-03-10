@@ -8,3 +8,6 @@ Today’s traveler is young, passionate, adventurous, and not satisfied by visit
 Byzantium travel believes that millennials are lacking a travel reference sight that allows the traveler to devour their travel locations.  A social website that encourages social interaction and travel notes will attract users and generate a new kind of travel reference application. 
 
 Byzantium Travel members are looking for adventure and locations where they can create unique adventures. 
+
+
+<img src='https://i.imgur.com/bROQUNM.jpg' />
