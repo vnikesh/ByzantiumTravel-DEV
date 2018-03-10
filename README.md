@@ -12,6 +12,8 @@ Byzantium travel believes that millennials are lacking a travel reference sight 
 
 Byzantium Travel members are looking for adventure and locations where they can create unique adventures. 
 
+User can login using Facebook and start searching for flight tickets and hotel accomedations. This is core functionality. Visitors can also plan their trip by seeing the weather forecast and checking the restaurants available in their destination. Using Google Maps, user will be able to check out the places on map. Additionally, we planned for users to chat with other users who are online and Send SMS to any number in USA when their mobile ran out of battery. 
+
 ---
 ### Data Model Diagram
 
