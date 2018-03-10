@@ -1,4 +1,7 @@
-# Byzantium travel
+
+<img src='https://i.imgur.com/2d2UpN5.jpg' />
+
+# Welcome to Byzantium travel GitHub
 
 ## ISQA-8380 : Team1 Assignment 5
 
@@ -9,7 +12,18 @@ Byzantium travel believes that millennials are lacking a travel reference sight 
 
 Byzantium Travel members are looking for adventure and locations where they can create unique adventures. 
 
+---
+### Data Model Diagram
 
+<img src='https://i.imgur.com/rSIcOSx.png' />
+
+---
 ### Use Case Diagram
 
 <img src='https://i.imgur.com/bROQUNM.jpg' style="width:500px;height:600px;" />
+
+---
+
+### Data Flow Diagram
+
+<img src='https://i.imgur.com/MGzP5dk.png' />
