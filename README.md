@@ -10,4 +10,5 @@ Byzantium travel believes that millennials are lacking a travel reference sight 
 Byzantium Travel members are looking for adventure and locations where they can create unique adventures. 
 
 
-<img src='https://i.imgur.com/bROQUNM.jpg' />
+
+<img src='https://i.imgur.com/bROQUNM.jpg' style="width:500px;height:600px;" />
