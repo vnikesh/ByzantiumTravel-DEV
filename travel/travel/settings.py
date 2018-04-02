@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'thirdauth',
     'social_django',
     'rest_framework',
+	'reservations',
 ]
 
 AUTHENTICATION_BACKENDS = (
