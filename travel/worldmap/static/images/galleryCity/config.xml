@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <juiceboxgallery
-	galleryTitle="Location Gallery"
+	galleryTitle=""
 >
 	<image imageURL="images/Omaha.jpg"
 	thumbURL="thumbs/Omaha.jpg"
