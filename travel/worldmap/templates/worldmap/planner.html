@@ -16,31 +16,47 @@
             <div class="col-sm-12 categorybox">
                 <div class="col-sm-4 travelcategory">
                     <section class="p12">
-                        <a href="#map"  data-content="Nature" onclick="displayCategory('Nature')">Nature</a>
+                        <a href="#juicebox-container" data-content="Nature" onclick="displayCategory('Nature')">Nature</a>
                     </section>
                 </div>
                 <div class="col-sm-4 travelcategory">
                     <section class="p16">
-                        <a href="#map" class="travelcategory" onclick="displayCategory('Citytrip')">Citytrip</a>
+                        <a href="#juicebox-container" class="travelcategory" onclick="displayCategory('Citytrip')">Citytrip</a>
                     </section>
                 </div>
                 <div class="col-sm-4 travelcategory">
                     <section class="p11">
-                        <a href="#map" class="travelcategory" onclick="displayCategory('Road')">Road</a>
+                        <a href="#juicebox-container" class="travelcategory" onclick="displayCategory('Road')">Road</a>
                     </section>
                 </div>
             </div>
         </div>
-        <div class="row map" id="map">
-            <div class="col-sm-8" >
+        <!--START JUICEBOX EMBED-->
+            <script>
+              new juicebox({
+                baseUrl : "{% static 'images/galleryAll/' %}",
+                containerId : "juicebox-container",
+                galleryWidth: "100%",
+                galleryHeight: "100%",
+                backgroundColor: "#222222"
+              });
+            </script>
+        <div id="juicebox-container"></div>
+        <!--END JUICEBOX EMBED-->
+        <button onclick="filterAfterLocation()">Filter World Map</button>
+
+        <div class="row map" id="worldmap">
+            <div id="mapContainer">
                 <h2>Map</h2>
-                <p id="TravelCategoryDisplay"></p>
-                <img src="https://media.wired.com/photos/59269e277034dc5f91bec140/master/w_2264,c_limit/world-song-map-large.jpg">
+                <div class="col-sm-8" id="map">
+
+                </div>
             </div>
+
             <div class="col-sm-4 mapPhotos">
                 <div class="col-sm-12">
                     <h3>Introduction ...</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus elementum, felis id bibendum vulputate, dui eros dapibus nunc, ut fringilla elit nulla eget libero. Quisque tempor viverra pulvinar. Suspendisse potenti. Ut imperdiet mattis feugiat. Vestibulum varius urna et turpis convallis condimentum. Nam pharetra vel diam porttitor luctus. In augue sem, lobortis in placerat non, tincidunt nec lorem. Curabitur et neque in mauris dapibus tristique. Curabitur sed facilisis lectus. Pellentesque laoreet tortor eget cursus dignissim. Aliquam non mattis nulla. Nunc pretium purus ut convallis mollis. Cras tempor risus velit, luctus tincidunt ex pharetra nec. Aliquam neque ipsum, mattis eu lobortis non, aliquet quis lectus. Quisque metus ipsum, cursus vitae rutrum eu, viverra in odio. Donec viverra semper ante vitae placerat.
+                    <p id="mapText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus elementum, felis id bibendum vulputate, dui eros dapibus nunc, ut fringilla elit nulla eget libero. Quisque tempor viverra pulvinar. Suspendisse potenti. Ut imperdiet mattis feugiat. Vestibulum varius urna et turpis convallis condimentum. Nam pharetra vel diam porttitor luctus. In augue sem, lobortis in placerat non, tincidunt nec lorem. Curabitur et neque in mauris dapibus tristique. Curabitur sed facilisis lectus. Pellentesque laoreet tortor eget cursus dignissim. Aliquam non mattis nulla. Nunc pretium purus ut convallis mollis. Cras tempor risus velit, luctus tincidunt ex pharetra nec. Aliquam neque ipsum, mattis eu lobortis non, aliquet quis lectus. Quisque metus ipsum, cursus vitae rutrum eu, viverra in odio. Donec viverra semper ante vitae placerat.
                     </p>
                 </div>
                 <h3>Photos of your travel destination:</h3>
@@ -51,6 +67,15 @@
                     <img src="https://centercityphila.org/uploads/attachments/cj1hy1ads08ev0oqdrc7f2evd-17-socc-intro.185.0.988.988.full.jpg">
                 </div>
             </div>
+        </div>
+        <div class="row" id="weather">
+          <h3> BUTTON IS ONLY A SUBSTITUTE TIL THE MAP WORKS <h3>
+          <button id="selector">Denver</button>
+                  <h3>Current Conditions</h3>
+                  <div>
+                    <div id="awxWeatherInfo"></div>
+                  </div
+
         </div>
         <div class="row" id="transport/accomodation">
             <div class="col-sm-6">
@@ -71,6 +96,78 @@
     </div>
 <script>
     $('#map').smoothScroll();
+</script>
+<script type="text/javascript">
+    $(function () {
+        var isMetric = false;
+        var language = "en";
+        var apiKey = "hoArfRosT1215";
+        var awxClearMessages = function() {
+
+            $("#awxWeatherInfo").html("...");
+            $("#awxWeatherUrl").html("...");
+        }
+        var awxCityLookUp = function (freeText) {
+            awxClearMessages();
+            locationUrl = "http://apidev.accuweather.com/locations/v1/search?q=" + freeText + "&apikey=" + apiKey;
+            $.ajax({
+                type: "GET",
+                url: locationUrl,
+                dataType: "jsonp",
+                cache: true,                    // Use cache for better reponse times
+                jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
+                success: function (data) { awxCityLookUpFound(data); }
+            });
+        };
+        var awxCityLookUpFound = function (data) {
+            var msg, locationKey = null;
+            if (data.length == 1) {
+                locationKey = data[0].Key;
+                msg = "One location found: <b>" + data[0].LocalizedName + "</b>. Key: " + locationKey;
+            }
+            else if(data.length == 0) {
+                msg = "No locations found."
+            }
+            else {
+                locationKey = data[0].Key;
+                msg = "Multiple locations found (" + data.length + "). Selecting the first one: " +
+                    "<b>" + data[0].LocalizedName + ", " + data[0].Country.ID + "</b>. Key: " + locationKey;
+            }
+            $("#awxLocationInfo").html(msg);
+            if(locationKey != null) {
+                awxGetCurrentConditions(locationKey);
+            }
+
+        };
+        var awxGetCurrentConditions = function (locationKey) {
+            currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" +
+                locationKey + ".json?language=" + language + "&apikey=" + apiKey;
+            $.ajax({
+                type: "GET",
+                url: currentConditionsUrl,
+                dataType: "jsonp",
+                cache: true,                    // Use cache for better reponse times
+                jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
+                success: function (data) {
+                        var html;
+                        if(data && data.length > 0) {
+                            var conditions = data[0];
+                            var temp = isMetric ? conditions.Temperature.Metric : conditions.Temperature.Imperial;
+                            html = "<div id='WeatherTxt'>" + conditions.WeatherText + "</div>" +
+                            "<div id='WeatherTemp'>" + temp.Value + " " + temp.Unit + "</div>" ;
+                        }
+                        else {
+                            html = "N/A";
+                        }
+                    $("#awxWeatherInfo").html(html);
+                }
+            });
+        };
+        $("#selector").click(function () {
+            var text = $("#selector").text();
+            awxCityLookUp(text);
+        });
+    });
 </script>
 
 {% endblock %}

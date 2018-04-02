@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<juiceboxgallery
+	galleryTitle="Location Gallery"
+>
+  <image imageURL="images/Route66_SantaMonica.jpg"
+	thumbURL="thumbs/Route66_SantaMonica.jpg"
+	linkURL="images/Route66_SantaMonica.jpg"
+	linkTarget="_blank">
+    <title>Route66 SantaMonica</title>
+  </image>
+  <image imageURL="images/Route66_Amarillo.jpg"
+	thumbURL="thumbs/Route66_Amarillo.jpg"
+	linkURL="images/Route66_Amarillo.jpg"
+	linkTarget="_blank">
+	<title>Route66 Amarillo</title>
+  </image>
+</juiceboxgallery>

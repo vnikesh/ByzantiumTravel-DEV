@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<juiceboxgallery
+	galleryTitle="Location Gallery"
+>
+	<image imageURL="images/Omaha.jpg"
+	thumbURL="thumbs/Omaha.jpg"
+	linkURL="images/Omaha.jpg"
+	linkTarget="_blank">
+	<title>Omaha</title>
+  </image>
+  <image imageURL="images/Denver.jpg"
+	thumbURL="thumbs/Denver.jpg"
+	linkURL="images/Denver.jpg"
+	linkTarget="_blank">
+	<title>Denver</title>
+  </image>
+  <image imageURL="images/SanFrancisco.jpg"
+	thumbURL="thumbs/SanFrancisco.jpg"
+	linkURL="images/SanFrancisco.jpg"
+	linkTarget="_blank">
+    <title>SanFrancisco</title>
+  </image>
+  <image imageURL="images/NewYork.jpg"
+	thumbURL="thumbs/NewYork.jpg"
+	linkURL="images/NewYork.jpg"
+	linkTarget="_blank">
+	<title>NewYork</title>
+  </image>
+</juiceboxgallery>

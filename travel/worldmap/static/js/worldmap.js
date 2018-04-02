@@ -7,14 +7,23 @@ var infowindowDenver;
 
 var imgDenver;
 
+var testText
 
 function initiate(){
-DenverText = "Denver, officially the City and County of Denver, is the capital and most populous municipality of the U.S. state of Colorado. Denver is in the South Platte River Valley on the western edge of the High Plains just east of the Front Range of the Rocky Mountains. The Denver downtown district is immediately east of the confluence of Cherry Creek with the South Platte River, approximately 12 mi (19 km) east of the foothills of the Rocky Mountains";
-
 
 DenverString = '<p class="infoWindow">Denver, Capitol of Colorado!</p>';
+SanFranString = '<p class="infoWindow">San Francisco, Tech Base of the US!</p>';
+OmahaString = '<p class="infoWindow">Denver, Gateway to the West!</p>';
+NewYorkString = '<p class="infoWindow">Denver, Big Apple!</p>';
+YosemiteString = '<p class="infoWindow">Denver, Best National Park!</p>';
+YellowstoneString = '<p class="infoWindow">Denver, Wyomings Treasure!</p>';
 
 infowindowDenver = new google.maps.InfoWindow({content: DenverString});
+infowindowSanFran = new google.maps.InfoWindow({content: SanFranString});
+infowindowOmaha = new google.maps.InfoWindow({content: OmahaString});
+infowindowNewYork = new google.maps.InfoWindow({content: NewYorkString});
+infowindowYosemite = new google.maps.InfoWindow({content: YosemiteString});
+infowindowYellowstone = new google.maps.InfoWindow({content: YellowstoneString});
 
 imgDenver = document.createElement('img');
 imgDenver.src = "/static/images/Denver.JPG";
@@ -23,7 +32,37 @@ imgDenver.setAttribute("id", "imageInfoBox");
 }
 
 
-      function initMap() {
+
+//function for posting the wanted location to python
+function uploadLocation(name){
+var csrftoken = getCookie('csrftoken');
+var data = {location : name, csrfmiddlewaretoken: csrftoken};
+    $.post('location_information/', data, function(response){
+            var boxText = response;
+            var boxImage = imgDenver;
+            addInfoBox(boxText, boxImage);
+    });
+}
+
+// using jQuery, to get cookie by name
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+//initialize the map object
+function initMap() {
       initiate();
       var map;
         map = new google.maps.Map(document.getElementById('map'), {
@@ -33,6 +72,10 @@ imgDenver.setAttribute("id", "imageInfoBox");
 
         var latlngDenver = new google.maps.LatLng(39.777128, -104.989211);
         var latlngSanFran = new google.maps.LatLng(37.77105,  -122.423851);
+        var latlngOmaha = new google.maps.LatLng(41.256537, -95.934503);
+        var latlngNewYork = new google.maps.LatLng(40.712775, -74.005973);
+        var latlngYosemite = new google.maps.LatLng(37.865101, -119.538329);
+        var latlngYellowstone = new google.maps.LatLng(44.427963, -110.588455);
 
         var markerDenver = new google.maps.Marker(
 			{
@@ -52,6 +95,42 @@ imgDenver.setAttribute("id", "imageInfoBox");
 				title: 'San Francisco'
 			});
 
+			var markerOmaha = new google.maps.Marker(
+			{
+				position: latlngOmaha,
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: 'Omaha'
+			});
+
+			var markerNewYork = new google.maps.Marker(
+			{
+				position: latlngNewYork,
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: 'New York'
+			});
+
+			var markerYosemite = new google.maps.Marker(
+			{
+				position: latlngYosemite,
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: 'Yosemite'
+			});
+
+			var markerYellowstone = new google.maps.Marker(
+			{
+				position: latlngYellowstone,
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: 'Yellowstone'
+			});
+
 			google.maps.event.addListener(markerDenver,'click',function() {
                         map.setZoom(11);
                         map.setCenter(markerDenver.getPosition());
@@ -60,55 +139,35 @@ imgDenver.setAttribute("id", "imageInfoBox");
                         });
 
 
-
-
-     function infoBox(nummer){
-    var elementMap = document.getElementById("map");
-    var boxText;
-    var boxImage;
-    switch (nummer){
-        case "denver": boxText = DenverText;
-                      boxImage = imgDenver;
-                      break;
-        case "sanfran": boxText = sanfranText;
-                       boxImage = imgsanfran;
-                     break;
-
-       case "maike": boxText = MaikeText;
-                      boxImage = imgMaike;
-                      break;
-
-        default: alert("Default Anweisung in der switch Anweisung!");
-    }
-
-     var worldmap = document.getElementById("worldmap");
-
-     //test if there is already an infoBox displaying
-    if (document.getElementById("infoBox")){
-        worldmap.removeChild(document.getElementById("infoBox"));
-        var neuerContainer = document.createElement("div");
-        neuerContainer.setAttribute("id", "infoBox");
-        neuerContainer.style.width = window.getComputedStyle(elementMap, "").width;
-        worldmap.appendChild(neuerContainer);
-        //add text and image for the new created container
-         infoText( boxText, boxImage);
-    } else {
-        var neuerContainer = document.createElement("div");
-        neuerContainer.setAttribute("id", "infoBox");
-        neuerContainer.style.width = window.getComputedStyle(elementMap, "").width;
-        worldmap.appendChild(neuerContainer);
-        //add text and image for the new created container
-         infoText( boxText, boxImage);
-    }
-      }
-
-      function infoText(textBox, image) {
-    var container = document.getElementById("infoBox");
-    var text = document.createElement("p");
-    text.innerHTML = textBox;
-    container.appendChild(image);
-    container.appendChild(text);
-    container.style.height = window.getComputedStyle(image, "").height;
 }
+
+function infoBox(nummer){
+    switch (nummer){
+        case "denver": uploadLocation("Denver");
+                       break;
+        case "sanfran": uploadLocation("San Francisco");
+                        break;
+
+       case "omaha": uploadLocation("Omaha");
+                     break;
+     case "newyork": uploadLocation("New York");
+     break;
+     case "yosemite": uploadLocation("Yosemite");
+     break;
+     case "yellowstone": uploadLocation("Yellowstone");
+     break;
+
+       default: alert("Default Anweisung in der switch Anweisung!");
+       }
+}
+
+function addInfoBox(boxText, boxImage){
+    var mapText = document.getElementById("mapText");
+    mapText.innerHTML = boxText;
+}
+
+function filterAfterLocation(){
+
+
 
 }

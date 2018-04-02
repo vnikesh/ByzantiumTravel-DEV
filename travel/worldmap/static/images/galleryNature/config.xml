@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<juiceboxgallery
+	galleryTitle="Location Gallery"
+>
+
+  <image imageURL="images/Yosemite.jpg"
+	thumbURL="thumbs/Yosemite.jpg"
+	linkURL="images/Yosemite.jpg"
+	linkTarget="_blank">
+	<title>Yosemite</title>
+  </image>
+  <image imageURL="images/Yellowstone.jpg"
+	thumbURL="thumbs/Yellowstone.jpg"
+	linkURL="images/Yellowstone.jpg"
+	linkTarget="_blank">
+	<title>Yellowstone</title>
+  </image>
+</juiceboxgallery>

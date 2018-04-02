@@ -15,7 +15,7 @@ class Location (models.Model):
     long = models.DecimalField(max_digits=50, decimal_places=2, null=False)
     lat = models.DecimalField(max_digits=50, decimal_places=2, null=False)
     type = models.CharField(max_length=200, null=False)
-    rank = models.IntegerField()
+    rank = models.IntegerField(null=True)
     region = models.ForeignKey(Region, related_name='region')
 
 

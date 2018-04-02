@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'worldmap',
     'thirdauth',
     'social_django',
+    'rest_framework',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -115,10 +116,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 
-
+#Keys for Social Authentication
 
 SOCIAL_AUTH_GITHUB_KEY = '9700102c19f06aa1d665'
 SOCIAL_AUTH_GITHUB_SECRET = '309fb7ac46c41cba92d959093dc084572fbe5e53'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '184420402179166'
+SOCIAL_AUTH_FACEBOOK_SECRET = '2e500e8f0c30df0bf66d14242249ad26'
 
 
 # Internationalization
