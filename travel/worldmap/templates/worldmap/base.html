@@ -36,7 +36,7 @@
     </script>
 
 </head>
-<body id="app-layout" onload="initMap()">
+<body id="app-layout">
 
     <nav class="navbar navbar-default navbar-fixed-top sticky">
         <div class="container-fluid">
@@ -85,6 +85,7 @@
     <script>
 	   $('#features').smoothScroll();
        $('#landingpage').smoothScroll();
+       $jQuery(window).load(initMap);
     </script>
 </footer>
 </body>

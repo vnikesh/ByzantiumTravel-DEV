@@ -10,6 +10,7 @@ function displayCategory (category) {
                 galleryHeight: "100%",
                 backgroundColor: "#222222"
               });
+              NatureMarkers();
         break;
         case 'Citytrip':
             changeScriptToCity();
@@ -20,6 +21,7 @@ function displayCategory (category) {
                 galleryHeight: "100%",
                 backgroundColor: "#222222"
               });
+              cityMarkers();
         break;
         case 'Road':
             changeScriptToRoad();
@@ -30,6 +32,7 @@ function displayCategory (category) {
                 galleryHeight: "100%",
                 backgroundColor: "#222222"
               });
+              RoadMarkers();
         break;
         default:
         alert ("Category doesn't exist");

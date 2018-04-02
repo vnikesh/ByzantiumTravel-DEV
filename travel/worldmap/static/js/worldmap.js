@@ -2,15 +2,28 @@
 var DenverText;
 
 var DenverString;
+var SanFranString;
+var OmahaString;
+var NewYorkString;
+var YosemiteString;
+var YellowstoneString;
 
 var infowindowDenver;
+var infowindowSanFran;
+var infowindowOmaha;
+var infowindowNewYork;
+var infowindowYosemite;
+var infowindowYellowstone;
 
 var imgDenver;
 
-var testText
+var testText;
+
+var markers = [];
+
+var map;
 
 function initiate(){
-
 DenverString = '<p class="infoWindow">Denver, Capitol of Colorado!</p>';
 SanFranString = '<p class="infoWindow">San Francisco, Tech Base of the US!</p>';
 OmahaString = '<p class="infoWindow">Denver, Gateway to the West!</p>';
@@ -64,7 +77,7 @@ function getCookie(name) {
 //initialize the map object
 function initMap() {
       initiate();
-      var map;
+
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 41.247144, lng: -96.016774},
           zoom: 4
@@ -76,6 +89,8 @@ function initMap() {
         var latlngNewYork = new google.maps.LatLng(40.712775, -74.005973);
         var latlngYosemite = new google.maps.LatLng(37.865101, -119.538329);
         var latlngYellowstone = new google.maps.LatLng(44.427963, -110.588455);
+        var latlngSantaMonica = new google.maps.LatLng(34.019454, -118.491191);
+        var latlngAmarillo = new google.maps.LatLng(35.221997, -101.831297);
 
         var markerDenver = new google.maps.Marker(
 			{
@@ -131,6 +146,34 @@ function initMap() {
 				title: 'Yellowstone'
 			});
 
+			var markerSantaMonica = new google.maps.Marker(
+			{
+				position: latlngSantaMonica,
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: 'Route66 SantaMonica'
+			});
+
+			var markerAmarillo = new google.maps.Marker(
+			{
+				position: latlngAmarillo,
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: 'Route66 Amarillo'
+			});
+
+			markers.push(markerDenver);
+			markers.push(markerSanFran);
+			markers.push(markerOmaha);
+			markers.push(markerNewYork);
+			markers.push(markerYosemite);
+			markers.push(markerYellowstone);
+			markers.push(markerSantaMonica);
+			markers.push(markerAmarillo);
+
+
 			google.maps.event.addListener(markerDenver,'click',function() {
                         map.setZoom(11);
                         map.setCenter(markerDenver.getPosition());
@@ -156,6 +199,10 @@ function infoBox(nummer){
      break;
      case "yellowstone": uploadLocation("Yellowstone");
      break;
+     case "santaMonica": uploadLocation("Santa Monica");
+     break;
+     case "amarillo": uploadLocation("Amarillo");
+     break;
 
        default: alert("Default Anweisung in der switch Anweisung!");
        }
@@ -167,7 +214,53 @@ function addInfoBox(boxText, boxImage){
 }
 
 function filterAfterLocation(){
+   var location = document.getElementsByClassName("jb-idx-thumb jb-thumb-visited jb-thm-thumb-selected");
+    //alert(location.length);
+    location = location[0].childNodes;
+    location = location[0].alt;
+    alert(location);
+    for (var i = 0; i < markers.length; i++) {
+            if (markers[i].getTitle() == location){
+            markers[i].setMap(map);
+            } else {
+            markers[i].setMap(null);
+            }
+        }
 
+}
 
+function NatureMarkers(){
+    markers[0].setMap(null);
+    markers[1].setMap(null);
+    markers[2].setMap(null);
+    markers[3].setMap(null);
+    markers[6].setMap(null);
+    markers[7].setMap(null);
 
+    markers[4].setMap(map);
+    markers[5].setMap(map);
+}
+
+function cityMarkers(){
+    markers[4].setMap(null);
+    markers[5].setMap(null);
+    markers[6].setMap(null);
+    markers[7].setMap(null);
+
+    markers[0].setMap(map);
+    markers[1].setMap(map);
+    markers[2].setMap(map);
+    markers[3].setMap(map);
+}
+
+function RoadMarkers(){
+    markers[0].setMap(null);
+    markers[1].setMap(null);
+    markers[2].setMap(null);
+    markers[3].setMap(null);
+    markers[4].setMap(null);
+    markers[5].setMap(null);
+
+    markers[6].setMap(map);
+    markers[7].setMap(map);
 }
