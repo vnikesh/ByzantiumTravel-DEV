@@ -6,9 +6,9 @@ function displayCategory (category) {
             new juicebox({
                 baseUrl : '/static/images/galleryNature/',
                 containerId : "juicebox-container",
-                galleryWidth: "100%",
-                galleryHeight: "100%",
-                backgroundColor: "#222222"
+                galleryWidth: "90%",
+                galleryHeight: "80%",
+                backgroundColor: "transparent"
               });
               NatureMarkers();
         break;
@@ -17,9 +17,9 @@ function displayCategory (category) {
             new juicebox({
                 baseUrl : '/static/images/galleryCity/',
                 containerId : "juicebox-container",
-                galleryWidth: "100%",
-                galleryHeight: "100%",
-                backgroundColor: "#222222"
+                galleryWidth: "90%",
+                galleryHeight: "80%",
+                backgroundColor: "transparent"
               });
               cityMarkers();
         break;
@@ -28,9 +28,9 @@ function displayCategory (category) {
             new juicebox({
                 baseUrl : '/static/images/galleryRoads/',
                 containerId : "juicebox-container",
-                galleryWidth: "100%",
-                galleryHeight: "100%",
-                backgroundColor: "#222222"
+                galleryWidth: "90%",
+                galleryHeight: "80%",
+                backgroundColor: "transparent"
               });
               RoadMarkers();
         break;
