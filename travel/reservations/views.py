@@ -26,7 +26,7 @@ def hotels(request):
 # def flights(request):
 #     main_api = "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey="
 #
-#     apikey = "4KIaWG7sAB9gq717tSVFb80WzWSfesNt"
+#     apikey = ""
 #     # origin = input("enter origin city name : ")
 #
 #
