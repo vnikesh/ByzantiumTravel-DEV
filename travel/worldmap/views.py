@@ -22,7 +22,7 @@ def home(request):
 def getLocationText(locationName):
     wiki_wiki = wikipediaapi.Wikipedia('en')
     page_py = wiki_wiki.page(locationName)
-    return page_py.summary[0:120]
+    return page_py.summary[0:500]
 
 @login_required
 def plannerGetStarted (request):

@@ -5,27 +5,61 @@
     <div class="jumbotron home" id="landingpage">
         <div class="container text-center landing">
             <h1>Find your next adventure!</h1>
-            <img src="{% static 'images/facebook.png' %}" class="loginbutton">
+            <a href="{% url 'thirdauth:social:begin' 'facebook' %}"><img src="{% static 'images/facebook.png' %}" class="loginbutton"></a>
         </div>
     </div>
     <div class="container-fluid text-center content">
         <div class="row content" id="features">
             <div class="col-sm-2 sidenav">
-                <p>Left Box with 20% </p>
-                <p>Phasellus dapibus, magna eu tincidunt tempus, augue leo aliquet dolor, quis viverra mauris mauris vel nulla. Aenean sit amet ligula vel sapien tempor dignissim pharetra ac sem. Duis nulla erat, molestie a libero a, accumsan luctus mi. Quisque interdum finibus mi in convallis. Cras lorem elit, feugiat quis mollis eget, lacinia vel felis. Integer efficitur enim lacus,     vitae facilisis lorem faucibus sit amet. Cras quis consequat dolor.
+                <p><h2>Get Inspired</h2></p>
+                <p>Our members span the globe, documenting their travel to remote places, and recommend local travel adventures at destination locations
+                    and even the most remote places. Think Antarctica, Galapagos, Patagonia, the Arctic, or the Amazon are obscure destinations?
+                    These locations are a few of the locations our members have experienced.  Share your travels with Byzantium Travel members ad
+                    build your travel portfolio.
                 </p>
             </div>
             <div class="col-sm-8 text-left">
-                <h1>Other Content</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque imperdiet mi at dui lobortis, eu finibus est vestibulum. Nullam non felis nec nibh viverra aliquam. Aliquam semper accumsan lorem ut fermentum. Suspendisse posuere ornare sapien in blandit. Morbi a urna at lacus congue congue. Suspendisse laoreet ut turpis sed accumsan. Proin ut turpis quis erat maximus accumsan nec quis quam. Maecenas non scelerisque orci.
+                <h1>UNIQUE TRAVEL: Your companion to experience travel adventures.</h1>
+                <p><b>Reasons to Use Byzantium Travel</b><br>
+                    <u>Personal Attention</u><br>
+                    From your first visit to sharing your travel, you will engage experience travelers who have lived,
+                    worked and played all over the world. Our travel web portal understands your unique style and
+                    interests as we design and help you choose your authentic trip.<br>
+                    <u>Peace of Mind</u><br>
+                    Constant research, site visits and attention to detail allows our members to build exciting travel
+                    adventures. You can have confidence that our members have experienced safe travel, comfort and
+                    seamless travel.  Byzantium Travel identifies travel locations that are dependability you can trust.<br>
+                    <u>Insider Access</u><br>
+                    Our member experiences, local partners in our destinations and affiliation with over 150 small ships
+                    gives us exclusive access that is invaluable in designing customized adventures.
                 </p>
                 <img src= "{% static 'images/header.jpg' %}" style="max-width: 600px">
-                <p>Aenean sodales orci vitae magna porta, nec sollicitudin massa volutpat. Integer venenatis sem orci, vitae lobortis risus euismod ut. Etiam malesuada libero eu nisl sollicitudin consequat. Ut posuere eros at sapien imperdiet, egestas auctor quam dictum. Nunc erat erat, dignissim sed porttitor ac, fermentum nec massa. Duis quis ultricies orci. Maecenas a risus vel justo mollis molestie eu non massa. Integer efficitur magna quis tempus consequat. Vivamus pulvinar purus nec nulla scelerisque tristique. Vivamus lectus felis, consequat nec accumsan venenatis, sagittis sit amet tellus.</p>
+                <p> <u>Travel Philosophy</u><br>
+                    Freedom for chance wildlife encounters, intriguing detours, and connecting with local residents is key
+                    to our travel philosophy. Adventure Life tours are designed to offer the best of a place while allowing
+                    freedom for those serendipitous moments that often create your best travel memories.<br>
+                    <u>Like-minded Travelers</u><br>
+                    We attract people who are inquisitive about the world and active in their pursuit of learning and
+                    discovery. Our members seek trusted resource for deep experiences, and they enjoy being a part of a
+                    community of like-minded people. Traveling to locations experience by discerning travelers is an
+                    enriching experience itself and one of the reasons guests choose us again and again. Byzantium Travel
+                    connect s you with recently re turned guests and you are able to discuss their experiences.<br>
+                    <u>Local Relationships</u><br>
+                    Byzantium members often use local guides who are passionate about their homes and take pride in
+                    introducing travelers to their culture, cuisine and way of life. Byzantium Tra vel application cultivates
+                    deep local relationships who provide access to leading biologists, historians, adventure guides,
+                    gourmet chefs and other specialists to allow us to create truly enriching experiences.
+                </p>
                 <img src="https://travel.psu.edu/sites/travel/files/styles/1200x600/public/news/business-travel-picture-id498170329.jpg?itok=Dg_NYdC4">
             </div>
         <div class="col-sm-2 sidenav">
-            <p>Right Box with 20% </p>
-            <p>Vestibulum sed metus pellentesque ex dictum volutpat. Proin tincidunt consequat sem, ac facilisis libero porta eu. Pellentesque id nunc porttitor, auctor urna euismod, cursus sem. Praesent hendrerit, ligula ac sodales fringilla, arcu dolor malesuada lacus, non mollis ligula est vitae tortor. Etiam bibendum, eros at pellentesque vestibulum, justo augue fringilla leo, id porta mauris justo eget odio. Aenean aliquet maximus finibus.
+            <p><h2>Tailored to you</h2></p>
+            <p>Combine your travel interests and our member recommendations to build an enviable travel
+                encounters.  Share you’re your experiences to document your off-the-beaten path locations, local
+                culture, wildlife encounters, and private access are our specialties. Byzantium Travel helps you locate
+                and arrange travel to ancient sites like Machu Picchu, Angkor Wat and Tikal, or explore urban
+                Shanghai or Cape Town. Our webservices help you arrange high-adrenaline adventures in the wilds of
+                Patagonia or Costa Rica, we can make your ideal getaway happen.
             </p>
         </div>
     </div>

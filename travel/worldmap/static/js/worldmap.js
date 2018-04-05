@@ -204,7 +204,7 @@ function infoBox(nummer){
      case "amarillo": uploadLocation("Amarillo");
      break;
 
-       default: alert("Default Anweisung in der switch Anweisung!");
+     default: alert("Default Anweisung in der switch Anweisung!");
        }
 }
 
@@ -218,7 +218,6 @@ function filterAfterLocation(){
     //alert(location.length);
     location = location[0].childNodes;
     location = location[0].alt;
-    alert(location);
     for (var i = 0; i < markers.length; i++) {
             if (markers[i].getTitle() == location){
             markers[i].setMap(map);
@@ -229,7 +228,19 @@ function filterAfterLocation(){
 
 }
 
+function HideAllMarkers(){
+    markers[0].setMap(null);
+    markers[1].setMap(null);
+    markers[2].setMap(null);
+    markers[3].setMap(null);
+    markers[4].setMap(null);
+    markers[5].setMap(null);
+    markers[6].setMap(null);
+    markers[7].setMap(null);
+}
+
 function NatureMarkers(){
+    HideAllMarkers();
     markers[0].setMap(null);
     markers[1].setMap(null);
     markers[2].setMap(null);
@@ -242,6 +253,7 @@ function NatureMarkers(){
 }
 
 function cityMarkers(){
+    HideAllMarkers();
     markers[4].setMap(null);
     markers[5].setMap(null);
     markers[6].setMap(null);
@@ -260,7 +272,20 @@ function RoadMarkers(){
     markers[3].setMap(null);
     markers[4].setMap(null);
     markers[5].setMap(null);
-
     markers[6].setMap(map);
     markers[7].setMap(map);
+
+}
+
+function AllMarkers(){
+    markers[0].setMap(map);
+    markers[1].setMap(map);
+    markers[2].setMap(map);
+    markers[3].setMap(map);
+    markers[4].setMap(map);
+    markers[5].setMap(map);
+    markers[6].setMap(map);
+    markers[7].setMap(map);
+
+    map.setCenter({lat: 41.247144, lng: -96.016774});
 }
