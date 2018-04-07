@@ -12,7 +12,7 @@ body {
     background-color: transparent;
 
 }
-.jumbotron.home::before {
+/* .jumbotron.home::before {
     content: "";
     position: fixed;
     top: 0;
@@ -24,7 +24,7 @@ body {
     background-image: url("images/header2.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
-}
+} */
 .jumbotron.home p {
     text-shadow: 0px 1px 25px white;
     font-weight: bolder;
@@ -64,11 +64,11 @@ nav {
     background-color: white;
 }
 footer {
-    background-color: #4F4E43;
-    min-height: 400px;
+    background-color: #141414;
+    color: white;
 }
 footer h2 {
-    color: #E6E2AF;
+    color: white;
 }
 #plannertext {
     padding-top: 8vw;
@@ -131,4 +131,7 @@ h2 {
 }
 #map {
   margin: auto !important;
+}
+#foot {
+  height: auto;
 }

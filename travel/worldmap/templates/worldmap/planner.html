@@ -1,37 +1,37 @@
 {% extends 'worldmap/base.html' %}
 {% load staticfiles %}
 {% block content %}
+
 <div class="jumbotron planner" id="getstarted">
   <div class="container text-center landing">
     <h1>Get Started!</h1>
     <p>Your next adventure is just a few clicks away!</p>
-    <button type="button" class="btn btn-success"><a href="#planner">Start planning</a></button>
+    <button type="button" class="btn btn-success"><a href="#category">Start planning</a></button>
   </div>
 </div>
-<div class="container-fluid text-center">
-  <div class="row cat" id="planner">
+  <div class="row cat" id="category">
     <div class="col-sm-12">
       <h2>Select one of the following categories</h2>
     </div>
     <div class="col-sm-12 categorybox">
-      <div class="col-sm-6 travelcategory">
+      <div class="col-xs-6 travelcategory">
         <section class="p12">
           <a href="#juicebox-container" data-content="Nature" onclick="displayCategory('Nature')">Nature</a>
         </section>
       </div>
-      <div class="col-sm-6 travelcategory">
+      <div class="col-xs-6 travelcategory">
         <section class="p16">
           <a href="#juicebox-container" class="travelcategory" onclick="displayCategory('Citytrip')">Citytrip</a>
         </section>
       </div>
     </div>
     <div class="col-sm-12 categorybox">
-      <div class="col-sm-6 travelcategory">
+      <div class="col-xs-6 travelcategory">
         <section class="p11">
           <a href="#gallery" class="travelcategory" onclick="displayCategory('Road')">Road</a>
         </section>
       </div>
-      <div class="col-sm-6 travelcategory">
+      <div class="col-xs-6 travelcategory">
         <section class="p15">
           <a href="#gallery" class="travelcategory" onclick="displayCategory('All')">All
             <div class="t1">
@@ -42,7 +42,6 @@
             </div>
           </a>
         </section>
-      </div>
     </div>
   </div>
 </div>
@@ -61,7 +60,7 @@
       </script>
       <div id="juicebox-container"></div>
       <div class="container text-center" style="margin-top:100px;">
-        <button onclick="filterAfterLocation()">
+        <button onclick="filterAfterLocation()" class="btn btn-success">
           <a href="#maprow">Filter World Map</a>
         </button>
       </div>
@@ -85,38 +84,50 @@
     <form method="POST" action="" id="FlightForm">
           {% csrf_token %}
           {{ form.as_p }}
-      <input type="submit" value="Search Flight" />
+
+      <input type="submit" class="btn btn-primary" value="Search Flight" />
     </form>
+
   <div>
-        <table>
+    <table class="table">
+      <thead>
       <tr>
-        <th>Departure Date</th>
-        <th>Return Date</th>
-        <th>Price</th>
-        <th>Airline</th>
+        <th scope="col">#</th>
+        <th scope="col">Departure Date</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Price</th>
+        <th scope="col">Airline</th>
       </tr>
+    </thead>
+    <tbody>
       <tr>
+        <th scope="row">1</th>
         <td id="departDate1"></td>
         <td id="returnDate1"></td>
         <td id="price1"></td>
         <td id="airline1"></td>
+
       </tr>
       <tr>
+        <th scope="row">2</th>
         <td id="departDate2"></td>
         <td id="returnDate2"></td>
         <td id="price2"></td>
         <td id="airline2"></td>
       </tr>
       <tr>
+        <th scope="row">3</th>
         <td id="departDate3"></td>
         <td id="returnDate3"></td>
         <td id="price3"></td>
         <td id="airline3"></td>
       </tr>
+    </tbody>
     </table>
   </div>
   <button type="button" class="btn btn-success"><a  href="#chat">Next</a></button>
   </div>
+
 </div>
 <div class="row" id="chat">
   <div class="col-sm-12">
@@ -134,6 +145,7 @@
     $('#transport').smoothScroll();
     $('#chat').smoothScroll();
     $('#getstarted').smoothScroll();
+    $('#category').smoothScroll();
     $(document).ready(initMap);
 </script>
 <script type="text/javascript">

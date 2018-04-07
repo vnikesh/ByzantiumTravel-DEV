@@ -1,5 +1,5 @@
 @media (min-width: 768px){
-    .navbar{ 
+    .navbar{
         height: 150px;
         background-image: url(images/logo-wide.jpg);
         background-size: auto 100%;
@@ -16,7 +16,7 @@
         bottom: 0;
         background-color: #323232;
         z-index: 999;
-        
+
     }
     #myNavbar {
         position: absolute;
@@ -27,4 +27,26 @@
         padding-right: 25px;
         padding-bottom: 10px;
     }
+}
+@media (max-width: 767px) {
+  .jumbotron {
+    margin-top: 50%;
+  }
+  #gallery {
+    /* margin-top: 900px;
+    margin-bottom: 100px;*/
+  }
+  #map {
+    width: 90vw;
+    height: 65vh;
+  }
+.jumbotron.home h1 {
+  font-size: 55px;
+}
+.jumbotron.home::before {
+  display: none;
+}
+.loginbutton {
+  max-width: 40vw !important;
+}
 }
