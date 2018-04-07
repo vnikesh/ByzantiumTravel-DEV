@@ -19,13 +19,13 @@
 	thumbURL="thumbs/SanFrancisco.jpg"
 	linkURL="images/SanFrancisco.jpg"
 	linkTarget="_blank">
-    <title>SanFrancisco</title>
+    <title>San Francisco</title>
   </image>
   <image imageURL="images/NewYork.jpg"
 	thumbURL="thumbs/NewYork.jpg"
 	linkURL="images/NewYork.jpg"
 	linkTarget="_blank">
-	<title>NewYork</title>
+	<title>New York</title>
   </image>
   <image imageURL="images/Yosemite.jpg"
 	thumbURL="thumbs/Yosemite.jpg"

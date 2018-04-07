@@ -15,11 +15,22 @@ var infowindowNewYork;
 var infowindowYosemite;
 var infowindowYellowstone;
 
+var latlngDenver;
+var latlngSanFran;
+var latlngOmaha;
+var latlngNewYork;
+var latlngYosemite;
+var latlngYellowstone;
+var latlngSantaMonica;
+var latlngAmarillo;
+
 var imgDenver;
 
 var testText;
 
 var markers = [];
+var markersNames = ["Denver", "San Francisco", "Omaha", "New York", "Yosemite", "Yellowstone", "Route66 SantaMonica", "Route66 Amarillor"];
+var markersPositions;
 
 var map;
 
@@ -37,6 +48,17 @@ infowindowOmaha = new google.maps.InfoWindow({content: OmahaString});
 infowindowNewYork = new google.maps.InfoWindow({content: NewYorkString});
 infowindowYosemite = new google.maps.InfoWindow({content: YosemiteString});
 infowindowYellowstone = new google.maps.InfoWindow({content: YellowstoneString});
+
+latlngDenver = new google.maps.LatLng(39.777128, -104.989211);
+latlngSanFran = new google.maps.LatLng(37.77105,  -122.423851);
+latlngOmaha = new google.maps.LatLng(41.256537, -95.934503);
+latlngNewYork = new google.maps.LatLng(40.712775, -74.005973);
+latlngYosemite = new google.maps.LatLng(37.865101, -119.538329);
+latlngYellowstone = new google.maps.LatLng(44.427963, -110.588455);
+latlngSantaMonica = new google.maps.LatLng(34.019454, -118.491191);
+latlngAmarillo = new google.maps.LatLng(35.221997, -101.831297);
+
+markersPositions = [latlngDenver, latlngSanFran, latlngOmaha, latlngNewYork, latlngYosemite, latlngYellowstone, latlngSantaMonica, latlngAmarillo];
 
 imgDenver = document.createElement('img');
 imgDenver.src = "/static/images/Denver.JPG";
@@ -74,6 +96,20 @@ function getCookie(name) {
     return cookieValue;
 }
 
+//create all markers on the map
+function createAllMarkers(){
+    for (var i=0;i<markersNames.length;i++){
+        marker = new google.maps.Marker({
+                position: markersPositions[i],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[i]
+        });
+        markers.push(marker);
+    }
+}
+
 //initialize the map object
 function initMap() {
       initiate();
@@ -83,98 +119,9 @@ function initMap() {
           zoom: 4
         });
 
-        var latlngDenver = new google.maps.LatLng(39.777128, -104.989211);
-        var latlngSanFran = new google.maps.LatLng(37.77105,  -122.423851);
-        var latlngOmaha = new google.maps.LatLng(41.256537, -95.934503);
-        var latlngNewYork = new google.maps.LatLng(40.712775, -74.005973);
-        var latlngYosemite = new google.maps.LatLng(37.865101, -119.538329);
-        var latlngYellowstone = new google.maps.LatLng(44.427963, -110.588455);
-        var latlngSantaMonica = new google.maps.LatLng(34.019454, -118.491191);
-        var latlngAmarillo = new google.maps.LatLng(35.221997, -101.831297);
+      createAllMarkers();
 
-        var markerDenver = new google.maps.Marker(
-			{
-				position: latlngDenver,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'Denver'
-			});
-
-			var markerSanFran = new google.maps.Marker(
-			{
-				position: latlngSanFran,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'San Francisco'
-			});
-
-			var markerOmaha = new google.maps.Marker(
-			{
-				position: latlngOmaha,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'Omaha'
-			});
-
-			var markerNewYork = new google.maps.Marker(
-			{
-				position: latlngNewYork,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'New York'
-			});
-
-			var markerYosemite = new google.maps.Marker(
-			{
-				position: latlngYosemite,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'Yosemite'
-			});
-
-			var markerYellowstone = new google.maps.Marker(
-			{
-				position: latlngYellowstone,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'Yellowstone'
-			});
-
-			var markerSantaMonica = new google.maps.Marker(
-			{
-				position: latlngSantaMonica,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'Route66 SantaMonica'
-			});
-
-			var markerAmarillo = new google.maps.Marker(
-			{
-				position: latlngAmarillo,
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: 'Route66 Amarillo'
-			});
-
-			markers.push(markerDenver);
-			markers.push(markerSanFran);
-			markers.push(markerOmaha);
-			markers.push(markerNewYork);
-			markers.push(markerYosemite);
-			markers.push(markerYellowstone);
-			markers.push(markerSantaMonica);
-			markers.push(markerAmarillo);
-
-
-			google.maps.event.addListener(markerDenver,'click',function() {
+			google.maps.event.addListener(markers[0],'click',function() {
                         map.setZoom(11);
                         map.setCenter(markerDenver.getPosition());
                         infowindowDenver.open(map, markerDenver);
@@ -218,74 +165,118 @@ function filterAfterLocation(){
     //alert(location.length);
     location = location[0].childNodes;
     location = location[0].alt;
-    for (var i = 0; i < markers.length; i++) {
-            if (markers[i].getTitle() == location){
-            markers[i].setMap(map);
+    DeleteAllMarkers();
+    for (var i = 0; i < markersNames.length; i++) {
+            if (markersNames[i] == location){
+            marker = new google.maps.Marker({
+                position: markersPositions[i],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[i]
+            });
+            markers.push(marker);
             } else {
-            markers[i].setMap(null);
+            //do nothing
             }
         }
 
 }
 
-function HideAllMarkers(){
-    markers[0].setMap(null);
-    markers[1].setMap(null);
-    markers[2].setMap(null);
-    markers[3].setMap(null);
-    markers[4].setMap(null);
-    markers[5].setMap(null);
-    markers[6].setMap(null);
-    markers[7].setMap(null);
+function DeleteAllMarkers(){
+    for (var i=0;i<markers.length;i++){
+        markers[i].setMap(null);
+        markers[i] = null;
+    }
+    markers = [];
 }
 
 function NatureMarkers(){
-    HideAllMarkers();
-    markers[0].setMap(null);
-    markers[1].setMap(null);
-    markers[2].setMap(null);
-    markers[3].setMap(null);
-    markers[6].setMap(null);
-    markers[7].setMap(null);
+    DeleteAllMarkers();
 
-    markers[4].setMap(map);
-    markers[5].setMap(map);
+    markerYosemite = new google.maps.Marker({
+                position: markersPositions[4],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[4]
+        });
+    markers.push(markerYosemite);
+
+    markerYellowstone = new google.maps.Marker({
+                position: markersPositions[5],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[5]
+        });
+    markers.push(markerYellowstone);
 }
 
 function cityMarkers(){
-    HideAllMarkers();
-    markers[4].setMap(null);
-    markers[5].setMap(null);
-    markers[6].setMap(null);
-    markers[7].setMap(null);
+    DeleteAllMarkers();
 
-    markers[0].setMap(map);
-    markers[1].setMap(map);
-    markers[2].setMap(map);
-    markers[3].setMap(map);
+    markerDenver = new google.maps.Marker({
+                position: markersPositions[0],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[0]
+        });
+    markers.push(markerDenver);
+
+    markerSanFran = new google.maps.Marker({
+                position: markersPositions[1],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[1]
+        });
+    markers.push(markerSanFran);
+    markerOmaha = new google.maps.Marker({
+                position: markersPositions[2],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[2]
+        });
+    markers.push(markerOmaha);
+
+    markerNewYork = new google.maps.Marker({
+                position: markersPositions[3],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[3]
+        });
+    markers.push(markerNewYork);
 }
 
 function RoadMarkers(){
-    markers[0].setMap(null);
-    markers[1].setMap(null);
-    markers[2].setMap(null);
-    markers[3].setMap(null);
-    markers[4].setMap(null);
-    markers[5].setMap(null);
-    markers[6].setMap(map);
-    markers[7].setMap(map);
+    DeleteAllMarkers();
+
+    markerSanta = new google.maps.Marker({
+                position: markersPositions[6],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[6]
+        });
+    markers.push(markerSanta);
+
+    markerAma = new google.maps.Marker({
+                position: markersPositions[7],
+				map: map,
+				draggable: false,
+				animation: google.maps.Animation.DROP,
+				title: markersNames[7]
+        });
+    markers.push(markerAma);
 
 }
 
 function AllMarkers(){
-    markers[0].setMap(map);
-    markers[1].setMap(map);
-    markers[2].setMap(map);
-    markers[3].setMap(map);
-    markers[4].setMap(map);
-    markers[5].setMap(map);
-    markers[6].setMap(map);
-    markers[7].setMap(map);
-
+    DeleteAllMarkers();
+    createAllMarkers();
     map.setCenter({lat: 41.247144, lng: -96.016774});
 }

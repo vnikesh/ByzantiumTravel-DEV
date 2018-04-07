@@ -94,10 +94,20 @@
     <div id="awxWeatherInfo"></div>
   </div>
 </div>
+
 <div class="row" id="transport/accomodation">
   <div class="col-sm-6">
     <h3>Flights</h3>
     <img src="https://thumbnails.trvl-media.com/XDLEvGqRCe48xzTW1YA1Bfw4klo=/media.expedia.com/media/content/expuk/graphics/landingpages/GMT/flightmerch/evergreen/image_gromerch-1640_532x299.jpg">
+    <form method="POST" action="" id="FlightForm">
+          {% csrf_token %}
+          {{ form.as_p }}
+
+      <input type="submit" value="Search Flight" />
+    </form>
+  <div>
+    {{ message }}
+  </div>
   </div>
   <div class="col-sm-6">
     <h3>Accomodation</h3>

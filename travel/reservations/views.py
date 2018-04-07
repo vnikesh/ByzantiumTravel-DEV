@@ -7,20 +7,41 @@ import json
 import urllib.parse
 import requests
 import datetime
+from .forms import *
+from amadeus import Flights
+from django.http import HttpResponse, HttpResponseRedirect
+from django.http.response import JsonResponse
 
 # Create your views here.
 
 
 def flights(request):
-
-   return render(request, 'flights.html',
-                 {'reservations': flights})
+    if request.method == 'POST':
+        form = forms.FlightForm()
+        return render(request, 'flights.html',
+                 {'form': form})
 
 
 def hotels(request):
 
    return render(request, 'hotels.html',
                  {'reservations': hotels})
+
+def getFlights(request):
+    flights = Flights('Zt0AY8d5B9UA7ERLccCjiGF6l6gpcUoS')
+    if request.method == 'POST':
+        form = FlightForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            resp = flights.extensive_search(
+                origin = data['origin'],
+                destination = data['destination'],
+                departure_date = '2018-05-15--2018-05-30'
+            )
+            #print(resp)
+            #return HttpResponse(resp['results'][0]['price'])
+            return HttpResponse(json.dumps(resp))
+
 
 
 # def flights(request):

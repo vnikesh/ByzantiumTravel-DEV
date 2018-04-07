@@ -5,6 +5,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import json
+from . import forms
 
 #For the wikipedia entries
 import wikipediaapi
@@ -26,7 +27,8 @@ def getLocationText(locationName):
 
 @login_required
 def plannerGetStarted (request):
-    return render(request, 'worldmap/planner.html')
+    form = forms.FlightForm()
+    return render(request, 'worldmap/planner.html', {'form': form})
 
 
 #Functions to get json strings

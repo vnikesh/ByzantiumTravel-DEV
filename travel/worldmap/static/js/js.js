@@ -138,3 +138,15 @@ function changeScriptToAll(){
          }
       }
 }
+$(document).ready(function() {
+    $('#FlightForm').submit(function(e){
+        $.post('/getFlights/', $(this).serialize(), function(data){
+            var json = JSON.parse(data);
+           alert(data);
+           alert(json.currency);
+           alert(json.results[0]);
+           // of course you can do something more fancy with your respone
+        });
+        e.preventDefault();
+    });
+});
