@@ -120,7 +120,7 @@ function initMap() {
         });
 
         createAllMarkers();
-        alert(markers[0]);
+        //alert(markers[0]);
 
         google.maps.event.addListener(markers[0],'click',function() {
 
