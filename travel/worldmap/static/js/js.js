@@ -142,10 +142,22 @@ $(document).ready(function() {
     $('#FlightForm').submit(function(e){
         $.post('/getFlights/', $(this).serialize(), function(data){
             var json = JSON.parse(data);
-           alert(data);
-           alert(json.currency);
-           alert(json.results[0].price);
-           // of course you can do something more fancy with your respone
+
+           document.getElementById('departDate1').innerHTML = json.results[0].departure_date
+           document.getElementById('returnDate1').innerHTML = json.results[0].return_date
+           document.getElementById('price1').innerHTML = json.results[0].price
+           document.getElementById('airline1').innerHTML = json.results[0].airline
+
+           document.getElementById('departDate2').innerHTML = json.results[1].departure_date
+           document.getElementById('returnDate2').innerHTML = json.results[1].return_date
+           document.getElementById('price2').innerHTML = json.results[1].price
+           document.getElementById('airline2').innerHTML = json.results[1].airline
+
+           document.getElementById('departDate3').innerHTML = json.results[2].departure_date
+           document.getElementById('returnDate3').innerHTML = json.results[2].return_date
+           document.getElementById('price3').innerHTML = json.results[2].price
+           document.getElementById('airline3').innerHTML = json.results[2].airline
+
         });
         e.preventDefault();
     });
