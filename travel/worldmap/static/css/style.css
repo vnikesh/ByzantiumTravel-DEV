@@ -93,6 +93,7 @@ a:focus {
 .row {
     padding-top: 55px;
     height: 100vh;
+    margin: 0;
 }
 .mapPhotos {
     padding-top: 50px;
@@ -127,4 +128,7 @@ h2 {
 }
 #header2 {
   padding-bottom: 15px;
+}
+#map {
+  margin: auto !important;
 }

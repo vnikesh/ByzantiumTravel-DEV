@@ -1,9 +1,9 @@
 
-html, body {
-    height: 100%;
+ html, body {
+    height: 50vh;
     margin: 0;
     padding: 0;
-  }
+  } */
 
 h1 a {
     color: 'black';
@@ -11,8 +11,8 @@ h1 a {
 }
 
 #map {
-               height: 300px;
-               width: 800px;
+               height: 80vh;
+               width: 40vw;
             }
 
 #title{

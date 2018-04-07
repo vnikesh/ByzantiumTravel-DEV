@@ -54,77 +54,61 @@
         new juicebox({
           baseUrl : "{% static 'images/galleryAll/' %}",
           containerId : "juicebox-container",
-          galleryWidth: "90%",
-          galleryHeight: "80%",
+          galleryWidth: "500px",
+          galleryHeight: "500px",
           backgroundColor: "transparent"
         });
       </script>
       <div id="juicebox-container"></div>
       <div class="container text-center" style="margin-top:100px;">
         <button onclick="filterAfterLocation()">
-          <a>Filter World Map</a>
+          <a href="#maprow">Filter World Map</a>
         </button>
       </div>
 </div>
-<div class="row map" id="worldmap">
-  <div id="mapContainer">
-    <h2>Map</h2>
-    <div class="col-sm-8" id="map"></div>
-  </div>
-  <div class="col-sm-4 mapPhotos">
-    <div class="col-sm-12">
-      <h3>Introduction ...</h3>
-      <p id="mapText">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus elementum, felis id bibendum vulputate, dui eros dapibus nunc, ut fringilla elit nulla eget libero. Quisque tempor viverra pulvinar. Suspendisse potenti. Ut imperdiet mattis feugiat. Vestibulum varius urna et turpis convallis condimentum. Nam pharetra vel diam porttitor luctus. In augue sem, lobortis in placerat non, tincidunt nec lorem. Curabitur et neque in mauris dapibus tristique. Curabitur sed facilisis lectus. Pellentesque laoreet tortor eget cursus dignissim. Aliquam non mattis nulla. Nunc pretium purus ut convallis mollis. Cras tempor risus velit, luctus tincidunt ex pharetra nec. Aliquam neque ipsum, mattis eu lobortis non, aliquet quis lectus. Quisque metus ipsum, cursus vitae rutrum eu, viverra in odio. Donec viverra semper ante vitae placerat.
-      </p>
-    </div>
-    <h3>Photos of your travel destination:</h3>
-      <div class="col-sm-6" id="mapPhoto1">
-        <img src="https://centercityphila.org/uploads/attachments/cj1hy1ads08ev0oqdrc7f2evd-17-socc-intro.185.0.988.988.full.jpg">
-      </div>
-      <div class="col-sm-6" id="mapPhoto2">
-        <img src="https://centercityphila.org/uploads/attachments/cj1hy1ads08ev0oqdrc7f2evd-17-socc-intro.185.0.988.988.full.jpg">
-      </div>
-  </div>
+<div class="row" id="maprow">
+  <h2>Map<h2>
+    <div class="col-sm-8">
+      <div id="map"></div>
 </div>
-<div class="row" id="weather">
-  <h3> BUTTON IS ONLY A SUBSTITUTE TIL THE MAP WORKS <h3>
-  <button id="selector">Denver</button>
-  <h3>Current Conditions</h3>
-  <div>
-    <div id="awxWeatherInfo"></div>
+  <div class="container text-center landing">
+    <button type="button" class="btn btn-success" id="selector"><a>Denver</a></button>
+      <div id="awxWeatherInfo"></div>
+      <button type="button" class="btn btn-success"><a  href="#transport">Next</a></button>
   </div>
 </div>
 
-<div class="row" id="transport/accomodation">
-  <div class="col-sm-6">
-    <h3>Flights</h3>
-    <img src="https://thumbnails.trvl-media.com/XDLEvGqRCe48xzTW1YA1Bfw4klo=/media.expedia.com/media/content/expuk/graphics/landingpages/GMT/flightmerch/evergreen/image_gromerch-1640_532x299.jpg">
+
+<div class="row" id="transport">
+  <div class="col-sm-12">
+    <h2>Flights</h2>
     <form method="POST" action="" id="FlightForm">
           {% csrf_token %}
           {{ form.as_p }}
-
       <input type="submit" value="Search Flight" />
     </form>
   <div>
     {{ message }}
   </div>
-  </div>
-  <div class="col-sm-6">
-    <h3>Accomodation</h3>
-    <img src="http://atigs2018.com/wp-content/uploads/2017/04/1-Hotel-Room.jpg"  style="max-width: 100%;">
+  <button type="button" class="btn btn-success"><a  href="#chat">Next</a></button>
   </div>
 </div>
 <div class="row" id="chat">
   <div class="col-sm-12">
-    <h3>Chat</h3>
-    <img src="https://www.codeproject.com/KB/WPF/1181555/Screenshot_1.png" style="max-width: 100%; max-height:100%;">
+    <h2>Chat</h2>
+      <div class="container text-center">
     <a href="{% url 'chatapp:twilio' %}">Start Chat</a>
+    <button type="button" class="btn btn-success"><a  href="#getstarted">To the beginning</a></button>
+  </div>
   </div>
 </div>
 <script>
-    $('#map').smoothScroll();
+    $('#maprow').smoothScroll();
     $('#gallery').smoothScroll();
     $('#worldmapgallery').smoothScroll();
+    $('#transport').smoothScroll();
+    $('#chat').smoothScroll();
+    $('#getstarted').smoothScroll();
     $(document).ready(initMap);
 </script>
 <script type="text/javascript">
