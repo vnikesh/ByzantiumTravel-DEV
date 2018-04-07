@@ -112,21 +112,23 @@ function createAllMarkers(){
 
 //initialize the map object
 function initMap() {
-      initiate();
+        initiate();
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 41.247144, lng: -96.016774},
           zoom: 4
         });
 
-      createAllMarkers();
+        createAllMarkers();
+        alert(markers[0]);
 
-			google.maps.event.addListener(markers[0],'click',function() {
-                        map.setZoom(11);
-                        map.setCenter(markerDenver.getPosition());
-                        infowindowDenver.open(map, markerDenver);
-                        infoBox('denver');
-                        });
+        google.maps.event.addListener(markers[0],'click',function() {
+
+                    map.setZoom(11);
+                    map.setCenter(markerDenver.getPosition());
+                    infowindowDenver.open(map, markerDenver);
+                    infoBox('denver');
+                    });
 
 
 }

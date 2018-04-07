@@ -36,7 +36,8 @@ def getFlights(request):
             resp = flights.extensive_search(
                 origin = data['origin'],
                 destination = data['destination'],
-                departure_date = '2018-05-15--2018-05-30'
+                #departure_date = '2018-05-15--2018-05-30'
+                departure_date = data['date']
             )
             #print(resp)
             #return HttpResponse(resp['results'][0]['price'])

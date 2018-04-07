@@ -144,7 +144,7 @@ $(document).ready(function() {
             var json = JSON.parse(data);
            alert(data);
            alert(json.currency);
-           alert(json.results[0]);
+           alert(json.results[0].price);
            // of course you can do something more fancy with your respone
         });
         e.preventDefault();

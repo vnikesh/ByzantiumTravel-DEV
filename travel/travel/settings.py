@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'social_django',
     'rest_framework',
 	'reservations',
+    'chatapp',
+    'bootstrap_datepicker',
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -144,3 +146,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TWILIO_ACCT_SID='AC77010b7d86d3a356f80667e6d790c128'
+TWILIO_API_SID='SK220399acaf59bfe4e7ce94d8a953ec63'
+TWILIO_API_SECRET='D7Us8vg4iBgDvOZbRr9QRpvDIDNO9BIv'
+TWILIO_CHAT_SID='ISebd5b0cc58b54d83b584fd910c8c1059'
+TWILIO_SYNC_SID='IS65bb40e14d983786971d533c6f8ba379'

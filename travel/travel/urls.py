@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'', include('thirdauth.urls', namespace='thirdauth')),
     url(r'^auth/', include('social_django.urls', namespace='social')),
     url(r'', include('reservations.urls', namespace='reservations')),
+    url(r'', include('chatapp.urls', namespace='chatapp')),
 ]
