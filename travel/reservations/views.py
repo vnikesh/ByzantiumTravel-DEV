@@ -28,7 +28,7 @@ def hotels(request):
                  {'reservations': hotels})
 
 def getFlights(request):
-    flights = Flights('Zt0AY8d5B9UA7ERLccCjiGF6l6gpcUoS')
+    flights = Flights('apikey')
     if request.method == 'POST':
         form = FlightForm(request.POST)
         if form.is_valid():
