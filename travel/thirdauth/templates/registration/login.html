@@ -15,7 +15,7 @@
                 <input type="hidden" name="next" value="{{ next }}" />
                 <p><input class="btn btn-lg btn-success btn-block" type="submit" value="Login"></p>
             </form>
-                <input class="btn btn-lg btn-facebook btn-block" type="submit" href="{% url 'thirdauth:social:begin' 'facebook' %}" value="Login via facebook">
+                <a href="{% url 'thirdauth:social:begin' 'facebook' %}" ><input class="btn btn-lg btn-facebook btn-block" value="Login via facebook"></a>
                     <hr/>
                   <center><h4>OR</h4></center>
                   <button type="button" href="/home/" class="btn btn-danger btn-lg btn-block" onclick="relocate_home()">Back</button>
