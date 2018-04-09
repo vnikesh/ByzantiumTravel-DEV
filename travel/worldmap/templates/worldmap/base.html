@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Location Finder</title>
+    <title>Byzantium-Travel</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!--static css files -->
-    <link rel="stylesheet" href="{% static 'css/animations.scss' %}">
+
     <link rel="stylesheet" href="{% static 'css/worldmap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/styling.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/media-queries.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animations.scss' %}">
+    <link rel="stylesheet" href="{% static 'css/styling.css' %}">
+
 
     <!--internet js files -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -36,33 +38,66 @@
     </script>
 
 </head>
-<body id="app-layout">
+<!--
+Navbar by https://github.com/alphadsy - free to use
+-->
 
-    <nav class="navbar navbar-default navbar-fixed-top sticky">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- <a class="navbar-brand" href="index.html"><img src="css/images/logo.jpg"></a> -->
-            </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="{% url 'worldmap:home' %}">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="{% url 'worldmap:getStarted' %}">Get Started</a></li>
-                <li><a href="">Contact</a></li>
-              </ul>
-              <ul class="nav navbar-nav">
-                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="{% url 'thirdauth:logout' %}"><span class="glyphicon glyphicon-off"></span> Logout</a></li>
-            </ul>
-        </div>
+  <nav class="navbar navbar-default navbar-doublerow navbar-trans navbar-fixed-top">
+  <!-- top nav -->
+  <nav class="navbar navbar-top hidden-xs">
+    <div class="container">
+      <!-- left nav top -->
+      <ul class="nav navbar-nav pull-left">
+        <li><a href="#"><span class="glyphicon glyphicon-thumbs-up text-white"></span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-globe text-white"></span></a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-pushpin text-white"></span></a></li>
+        <li><a href="#"><span class="text-white">QUESTIONS? CALL: <b>+40288888888</b></span></a></li>
+      </ul>
+      <!-- right nav top -->
+      <ul class="nav navbar-nav pull-right">
+        <li><a href="" class="text-white">About Us</a></li>
+        <li><a href="" class="text-white">Contact Us</a></li>
+      </ul>
     </div>
-        <div class="filler"></div>
+    <div class="dividline light-grey"></div>
+  </nav>
+  <!-- down nav -->
+  <nav class="navbar navbar-down">
+    <div class="container">
+      <div class="flex-container">
+        <div class="navbar-header flex-item">
+          <div class="navbar-brand" href="https://Byzantium-Travel.herokuapp.com">BYZANTIUM</div>
+        </div>
+        <ul class="nav navbar-nav flex-item hidden-xs">
+          <li><a href="{% url 'worldmap:home' %}">Features</a></li>
+          <li><a href="{% url 'worldmap:getStarted' %}">Get Started</a></li>
+          <li><a href="{% url 'chatapp:twilio' %}">Start Chat</a></li>
+          <li><a href="{% url 'thirdauth:authentication' %}">Login</a></li>
+          <li><a href="{% url 'thirdauth:logout' %}">Logout</a></li>
+          <!--<li><a href="">TheTeam</a></li> -->
+        </ul>
+        <ul class="nav navbar-nav flex-item hidden-xs pull-right">
+          <li><a href="#" class=""></a></li>
+        </ul>
+        <!-- dropdown only moblie -->
+          <div class="dropdown visible-xs pull-right">
+            <button class="btn btn-default dropdown-toggle " type="button" id="dropdownmenu" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-align-justify"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'worldmap:home' %}">Features</a></li>
+              <li><a href="{% url 'worldmap:getStarted' %}">Get Started</a></li>
+              <li><a href="{% url 'chatapp:twilio' %}">Start Chat</a></li>
+              <li><a href="{% url 'thirdauth:authentication' %}">Login</a></li>
+              <li><a href="{% url 'thirdauth:logout' %}">Logout</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Contact us</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </nav>
+  </nav>
 
 {% block content %}
 {% endblock %}
@@ -84,16 +119,16 @@
                 <h5 class="text-uppercase">Links</h5>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="#!">Link 1</a>
+                        <a href="#!">Home</a>
                     </li>
                     <li>
-                        <a href="#!">Link 2</a>
+                        <a href="#!">Planner</a>
                     </li>
                     <li>
-                        <a href="#!">Link 3</a>
+                        <a href="#!">Contact</a>
                     </li>
                     <li>
-                        <a href="#!">Link 4</a>
+                        <a href="#!">Github Repo</a>
                     </li>
                 </ul>
             </div>
@@ -111,7 +146,22 @@
 
 </footer>
     <script>
-	   $('#features').smoothScroll();
+     // toggle class scroll
+$(window).scroll(function() {
+    if($(this).scrollTop() > 50)
+    {
+        $('.navbar-trans').addClass('afterscroll');
+    } else
+    {
+        $('.navbar-trans').removeClass('afterscroll');
+    }
+
+});
+
+// demo only
+// open link in new tab without ugly target="_blank"
+$("a[href^='http']").attr("target", "_blank");
+
     </script>
 </body>
 </html>

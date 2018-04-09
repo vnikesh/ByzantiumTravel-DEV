@@ -130,11 +130,6 @@ SOCIAL_AUTH_FACEBOOK_KEY = '184420402179166'
 SOCIAL_AUTH_FACEBOOK_SECRET = '2e500e8f0c30df0bf66d14242249ad26'
 
 
-LOGIN_REDIRECT_URL = reverse_lazy('home')
-LOGIN_URL = reverse_lazy('login')
-LOGOUT_URL = reverse_lazy('logout')
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

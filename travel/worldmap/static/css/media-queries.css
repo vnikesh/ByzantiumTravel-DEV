@@ -1,4 +1,4 @@
-@media (min-width: 768px){
+/* @media (min-width: 768px){
     .navbar{
         height: 150px;
         background-image: url(images/logo-wide.jpg);
@@ -27,7 +27,7 @@
         padding-right: 25px;
         padding-bottom: 10px;
     }
-}
+} */
 @media (max-width: 767px) {
   .jumbotron {
     margin-top: 50%;
@@ -39,6 +39,9 @@
   #map {
     width: 90vw;
     height: 65vh;
+  }
+  .ontop {
+    top: 10%;
   }
 .jumbotron.home h1 {
   font-size: 55px;

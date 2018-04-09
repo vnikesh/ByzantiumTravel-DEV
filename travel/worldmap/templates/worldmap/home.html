@@ -1,54 +1,71 @@
 {% extends 'worldmap/base.html' %}
 {% load staticfiles %}
 {% block content %}
+<header>
+    <img src="https://get.pxhere.com/photo/light-bokeh-night-flower-city-red-color-darkness-overcast-yellow-lighting-circle-close-up-in-the-evening-shape-night-view-macro-photography-765510.jpg" style="width:100%">
 
-    <div class="jumbotron home" id="landingpage">
-        <div class="container text-center landing">
-            <h1>Find your next adventure!</h1>
-            <a href="{% url 'thirdauth:social:begin' 'facebook' %}"><img src="{% static 'images/facebook.png' %}" class="loginbutton"></a>
-            <p><button type="button" class="btn btn-success"><a  href="#features">Read more</a></button></p>
-        </div>
+</header>
+<div class="ontop container">
+<div class="row">
+  <div class="col-sx-12 text-center">
+      <h1>Byzantium Travel</h1>
+      <h2>- Find your next adventure</h2>
+      <button class="btn btn-danger"><a href="#Features">Read more</a>
     </div>
-    <div class="container-fluid text-center content">
-        <div class="row content" id="features">
-            <div class="col-sm-2">
-                <p><h2>Get Inspired</h2></p>
-                <p>Our members span the globe, documenting their travel to remote places, and recommend local travel adventures at destination locations
-                    and even the most remote places. Think Antarctica, Galapagos, Patagonia, the Arctic, or the Amazon are obscure destinations?
-                    These locations are a few of the locations our members have experienced.  Share your travels with Byzantium Travel members ad
-                    build your travel portfolio.
-                </p>
-            </div>
-            <div class="col-sm-8 text-center">
-                <h2>UNIQUE TRAVEL: Your companion to experience travel adventures.</h2>
-                <br>
-                <h3>Reasons to Use Byzantium Travel</h3>
-                <br>
-                <h4>Personal Attention</h4>
-                <p>From your first visit to sharing your travel, you will engage experience travelers who have lived,
-                    worked and played all over the world. Our travel web portal understands your unique style and
-                    interests as we design and help you choose your authentic trip.
-                </p>
-                <h4>Peace of Mind</h4>
-                  <p>Constant research, site visits and attention to detail allows our members to build exciting travel
-                    adventures. You can have confidence that our members have experienced safe travel, comfort and
-                    seamless travel.  Byzantium Travel identifies travel locations that are dependability you can trust.</p>
-                  <h4>Insider Access</h4>
-                  <p>Our member experiences, local partners in our destinations and affiliation with over 150 small ships
-                    gives us exclusive access that is invaluable in designing customized adventures.</p>
-                <img src= "{% static 'images/header.jpg' %}" style="max-width: 400px">
-            </div>
-        <div class="col-sm-2 sidenav">
-            <p><h2>Tailored to you</h2></p>
-            <p>Combine your travel interests and our member recommendations to build an enviable travel
-                encounters.  Share you’re your experiences to document your off-the-beaten path locations, local
-                culture, wildlife encounters, and private access are our specialties. Byzantium Travel helps you locate
-                and arrange travel to ancient sites like Machu Picchu, Angkor Wat and Tikal, or explore urban
-                Shanghai or Cape Town. Our webservices help you arrange high-adrenaline adventures in the wilds of
-                Patagonia or Costa Rica, we can make your ideal getaway happen.
-            </p>
+</div>
+</div>
+<div class="darkpattern" id="Features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Reasons to Use Byzantium Travel</h2>
+        <br>
+        <div class="col-md-6 text-center">
+          <h3>Personal Attention<h3>
         </div>
+        <div class="col-md-6">
+          <p>From your first visit to sharing your travel, you will engage experience travelers who have lived,
+              worked and played all over the world. Our travel web portal understands your unique style and
+              interests as we design and help you choose your authentic trip.
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3>Peace of Mind<h3>
+        </div>
+        <div class="col-md-6">
+          <p>Constant research, site visits and attention to detail allows our members to build exciting travel
+            adventures. You can have confidence that our members have experienced safe travel, comfort and
+            seamless travel.  Byzantium Travel identifies travel locations that are dependability you can trust.
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3>Tailored to you<h3>
+        </div>
+        <div class="col-md-6">
+          <p>Combine your travel interests and our member recommendations to build an enviable travel
+              encounters.  Share you’re your experiences to document your off-the-beaten path locations, local
+              culture, wildlife encounters, and private access are our specialties. Byzantium Travel helps you locate
+              and arrange travel to ancient sites like Machu Picchu, Angkor Wat and Tikal, or explore urban
+              Shanghai or Cape Town. Our webservices help you arrange high-adrenaline adventures in the wilds of
+              Patagonia or Costa Rica, we can make your ideal getaway happen.
+          </p>
+        </div>
+        <div class="col-md-6 text-center">
+          <h3>Get Inspired<h3>
+        </div>
+        <div class="col-md-6">
+          <p>Our members span the globe, documenting their travel to remote places, and recommend local travel adventures at destination locations
+              and even the most remote places. Think Antarctica, Galapagos, Patagonia, the Arctic, or the Amazon are obscure destinations?
+              These locations are a few of the locations our members have experienced.  Share your travels with Byzantium Travel members ad
+              build your travel portfolio.
+          </p>
+        </div>
+        <div class="text-center">
+        <button class="btn btn-danger"><a href="{% url 'worldmap:getStarted' %}">Start Planning</a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 {% endblock %}
