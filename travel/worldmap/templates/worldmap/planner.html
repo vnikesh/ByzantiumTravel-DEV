@@ -68,7 +68,7 @@
         });
       </script>
       <div id="juicebox-container"></div>
-      <div class="container text-center"  style="margin-top:100px;">
+      <div class="container text-center"  style="margin-top:70px;">
         <button onclick="filterAfterLocation()" class="btn btn-danger">
           <a href="#maprow">Filter World Map</a>
         </button>
@@ -91,7 +91,7 @@
 </div>
 </div>
 </div>
-<div class="greypattern">
+<div class="greypattern flight">
   <div class="container">
 <div class="row" id="transport">
   <div class="col-sm-12">
@@ -100,7 +100,7 @@
           {% csrf_token %}
           {{ form.as_p }}
 
-      <input type="submit" class="btn btn-primary" value="Search Flight" />
+      <input type="submit" class="btn btn-danger" value="Search Flight" />
     </form>
 
   <div>

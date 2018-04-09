@@ -54,9 +54,9 @@ footer {
 footer h2 {
     color: white;
 }
-#plannertext {
+/* #plannertext {
     padding-top: 8vw;
-}
+} */
 a:hover {
     color: white;
     text-decoration: none;
@@ -71,21 +71,25 @@ a:focus {
 .map {
     padding-top: 7vw;
 }
-.map img {
+/* .map img {
     max-width: 100%;
-}
+} */
 .row {
     padding-top: 55px;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
+    padding-bottom: 20px;
+}
+.row#foot {
+  min-height: 0px;
 }
 .mapPhotos {
     padding-top: 50px;
     padding-bottom: 100px;
 }
-.dropdown-menu {
+/* .dropdown-menu {
     z-index: 999;
-}
+} */
 .categorybox {
     padding-top: 5%;
 }
@@ -107,6 +111,9 @@ h2 {
   height: 100vh;
   margin-top: 25px;
 } */
+.flight input {
+  color: black !important;
+}
 .catbutton {
   margin-top: 50px
 }
