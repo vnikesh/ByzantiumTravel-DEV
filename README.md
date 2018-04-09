@@ -3,7 +3,7 @@
 
 # Welcome to Byzantium travel GitHub
 
-## ISQA-8380 : Team1 Assignment 5
+## ISQA-8380 : Team-1 Assignment 5
 
 
 Today’s traveler is young, passionate, adventurous, and not satisfied by visiting traditional establishments.  Travelers want to explore and locate unique restaurants, adventures and shares their discoveries. Millennial travelers, defined as adults born after 1980, comprise 20% of international traveler accounting for 320 million trips per year.
