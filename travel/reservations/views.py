@@ -8,27 +8,28 @@ import urllib.parse
 import requests
 import datetime
 from .forms import *
+from . import forms
 from amadeus import Flights
+from amadeus import Hotels
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http.response import JsonResponse
 
 # Create your views here.
-
-
-def flights(request):
-    if request.method == 'POST':
-        form = forms.FlightForm()
-        return render(request, 'flights.html',
-                 {'form': form})
-
-
-def hotels(request):
-
-   return render(request, 'hotels.html',
-                 {'reservations': hotels})
+#
+# def flights(request):
+#     if request.method == 'POST':
+#         form = forms.FlightForm()
+#         return render(request, 'flights.html',
+#                  {'form': form})
+#
+# def hotels(request):
+#     if request.method == 'POST':
+#         hform = forms.HotelForm()
+#         return render(request, 'hotels.html',
+#                  {'reservations': hotels})
 
 def getFlights(request):
-    flights = Flights('apikey')
+    flights = Flights('Zt0AY8d5B9UA7ERLccCjiGF6l6gpcUoS')
     if request.method == 'POST':
         form = FlightForm(request.POST)
         if form.is_valid():
@@ -37,12 +38,23 @@ def getFlights(request):
                 origin = data['origin'],
                 destination = data['destination'],
                 #departure_date = '2018-05-15--2018-05-30'
-                departure_date = data['date']
-            )
+                departure_date = data['startdate'])
             #print(resp)
             #return HttpResponse(resp['results'][0]['price'])
-            return HttpResponse(json.dumps(resp))
+        return HttpResponse(json.dumps(resp))
 
+
+def getHotels(request):
+    hotels = Hotels('Zt0AY8d5B9UA7ERLccCjiGF6l6gpcUoS')
+    if request.method == 'POST':
+        hform = HotelForm(request.POST)
+        if hform.is_valid():
+            data = hform.cleaned_data
+            resp1 = hotels.search_airport(location=data['location'],
+                                         check_in=data['checkin'],
+                                         check_out=data['checkout'])
+            print(resp1)
+        return HttpResponse(json.dumps(resp1))
 
 
 # def flights(request):

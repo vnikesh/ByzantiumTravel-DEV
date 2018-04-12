@@ -16,6 +16,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from .serializers import LocationDescriptionSerializer
 
+
 def home(request):
    return render(request, 'worldmap/home.html',
                  {'worldmap': home})
@@ -28,7 +29,8 @@ def getLocationText(locationName):
 @login_required
 def plannerGetStarted (request):
     form = forms.FlightForm()
-    return render(request, 'worldmap/planner.html', {'form': form})
+    hform = forms.HotelForm()
+    return render(request, 'worldmap/planner.html', {'form': form, 'hform': hform})
 
 
 #Functions to get json strings
