@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 	'reservations',
     'chatapp',
     'bootstrap_datepicker',
-    'bootstrapform',
 ]
 
 AUTHENTICATION_BACKENDS = (
