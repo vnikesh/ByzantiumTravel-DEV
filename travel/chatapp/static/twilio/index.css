@@ -2,7 +2,7 @@
   box-sizing:border-box;
 }
 
-html, body {
+/* html, body {
   padding:0;
   margin:0;
   height:100%;
@@ -27,17 +27,17 @@ header a, header a:visited {
 
 header a:hover {
   text-decoration:underline;
-}
+} */
 
-section {
+/* section {
   height:70%;
   background-color:#2B2B2A;
-}
+} */
 
 section input {
   display:block;
   height:52px;
-  width:800px;
+  width:100%;
   margin:10px auto;
   outline:none;
   background-color:transparent;
@@ -49,12 +49,12 @@ section input {
 }
 
 #messages {
-  background-color:#232323;
   padding:10px;
   height:100%;
-  width:800px;
+  width:100%;
   margin:0 auto;
   overflow-y:auto;
+  text-align: center;
 }
 
 #messages p {
@@ -65,11 +65,14 @@ section input {
 .info {
   margin:5px 0;
   font-style:italic;
+  color: white;
 }
 
 .message-container {
   margin:5px 0;
   color:#fff;
+  text-align: left;
+  padding-left: 7%;
 }
 
 .message-container .username {
@@ -88,3 +91,7 @@ section input {
   display:inline-block;
   margin-right:5px;
 }
+#chat-input {
+  padding-left: 3%
+}
+#chatsec { background-color: #2E2F33}

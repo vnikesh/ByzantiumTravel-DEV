@@ -21,12 +21,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <!--static css files -->
-
+    <link rel="stylesheet" href="{% static 'twilio/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/worldmap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/media-queries.css' %}">
     <link rel="stylesheet" href="{% static 'css/animations.scss' %}">
     <link rel="stylesheet" href="{% static 'css/styling.css' %}">
+
 
 
     <!--internet js files -->
@@ -82,7 +83,6 @@ Navbar by https://github.com/alphadsy - free to use
         <ul class="nav navbar-nav flex-item hidden-xs">
           <li><a href="{% url 'worldmap:home' %}">Features</a></li>
           <li><a href="{% url 'worldmap:getStarted' %}">Planner</a></li>
-          <li><a href="{% url 'chatapp:twilio' %}">Start Chat</a></li>
           <li><a href="{% url 'thirdauth:authentication' %}">Login</a></li>
           <li><a href="{% url 'thirdauth:logout' %}">Logout</a></li>
           <!--<li><a href="">TheTeam</a></li> -->

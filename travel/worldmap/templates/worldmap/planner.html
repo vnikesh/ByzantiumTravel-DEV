@@ -1,6 +1,11 @@
 {% extends 'worldmap/base.html' %}
 {% load staticfiles %}
 {% block content %}
+<!-- <title>Twilio Chat Quickstart</title> -->
+<link rel="shortcut icon" href="//www.twilio.com/marketing/bundles/marketing/img/favicons/favicon.ico">
+<!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+ -->
+
 <header style="height:100vh; background-image:url( '/static/css/images/bg-planner.jpeg' );">
 <div class="container">
   <div class="row planhead text-center">
@@ -81,7 +86,7 @@
   <div class="row rowcon" id="rowmap">
     <div class="col-sm-12 col-lg-8">
         <h2>Map</h2>
-          <div id="map"></div>
+          <section id="sectionmap"><div id="map"></div></section>
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4">
       <div class="col-sm12">
@@ -116,7 +121,7 @@
   </div>
 </div>
 </div>
-</div>
+
 <div class="greypattern flight">
   <div class="container">
 <div class="row" id="transport">
@@ -235,19 +240,26 @@
 
 
 
-<div class="greypattern">
+<div class="greypattern" class="chat">
   <div class="container">
 <div class="row" id="chat">
   <div class="col-sm-12">
     <h2>Chat</h2>
-      <div class="container text-center">
-    <button type="button" class="btn btn-danger"><a href="{% url 'chatapp:twilio' %}">Start Chat</a></button><br>
-    <button type="button" class="btn btn-danger"><a  href="#getstarted">To the beginning</a></button>
+      <div class="row">
+        <section id="chatsec">
+          <div id="messages" class="pre-scrollable"></div>
+          <input id="chat-input" type="text" placeholder="Type message ..." autofocus/>
+        </section>
   </div>
   </div>
+
 </div>
 </div>
+
 </div>
+<script src="https://media.twiliocdn.com/sdk/js/chat/v1.0/twilio-chat.js"></script>
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> -->
+<script src="{% static 'twilio/index.js' %}"></script>
 <script>
     $('#maprow').smoothScroll();
     $('#gallery').smoothScroll();
@@ -256,6 +268,7 @@
     $('#chat').smoothScroll();
     $('#getstarted').smoothScroll();
     $('#category').smoothScroll();
+    $('#getStarted').smoothScroll();
 </script>
 <script type="text/javascript">
     $(function () {
