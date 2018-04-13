@@ -171,7 +171,7 @@ $(document).ready(function() {
 
            document.getElementById('propertyname1').innerHTML = json.results[0].property_name
            document.getElementById('contact1').innerHTML = json.results[0].contacts[0].detail
-           document.getElementById('hprice1').innerHTML = json.results[0].total_price
+           document.getElementById('hprice1').innerHTML = json.results[0]['total_price']['amount']
            document.getElementById('roomtype1').innerHTML = json.results[0].rooms[0].room_type_info[room_type]
 
            // document.getElementById('propertyname2').innerHTML = json.results[1].property_name

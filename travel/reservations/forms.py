@@ -15,4 +15,3 @@ class HotelForm(forms.Form):
 
 class ZomatoForm(forms.Form):
     locationcity = forms.CharField()
-    category = forms.ChoiceField()

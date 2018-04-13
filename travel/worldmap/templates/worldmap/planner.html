@@ -212,7 +212,6 @@
         <td id="contact1"></td>
         <td id="hprice1"></td>
         <td id="roomtype1"></td>
-
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -231,13 +230,67 @@
     </tbody>
     </table>
   </div>
+  <button type="button" class="btn btn-danger"><a  href="#zomato">Next</a></button>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="darkpattern hotel">
+  <div class="container">
+<div class="row" id="zomato">
+  <div class="col-sm-12 col-lg-12">
+    <h2>Restaraunts</h2>
+    <form method="POST" action="" id="ZomatoForm">
+          {% csrf_token %}
+          Location {{ zomato_form.locationcity }}
+
+
+      <input type="submit" class="btn btn-danger" value="Search Restaraunts" />
+    </form>
+
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Restaraunt </th>
+        <th scope="col">Cuisine</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Images</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td id="restaraunt1"></td>
+        <td id="cuisine1"></td>
+        <td id="rating1"></td>
+        <td id="images1"></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td id="restaraunt2"></td>
+        <td id="cuisine2"></td>
+        <td id="rating2"></td>
+        <td id="image2"></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td id="restaraunt3"></td>
+        <td id="cuisine3"></td>
+        <td id="rating3"></td>
+        <td id="image3"></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
   <button type="button" class="btn btn-danger"><a  href="#chat">Next</a></button>
   </div>
-
 </div>
 </div>
 </div>
-
 
 
 <div class="greypattern" class="chat">
