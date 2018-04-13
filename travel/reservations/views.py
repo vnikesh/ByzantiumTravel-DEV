@@ -58,6 +58,11 @@ def getHotels(request):
                                          check_out=data1['check_out'])
         return HttpResponse(json.dumps(resp1))
 
+def getZomato(request):
+    p = Pyzomato('1c9999881f4fe458a246ecbb5e5a4f36')
+    zomato_data = p.search(q='locationcity')
+
+    return HttpResponse(json.dumps(zomato_data))
 
 
 # def flights(request):

@@ -11,3 +11,8 @@ class HotelForm(forms.Form):
     location = forms.CharField()
     check_in = forms.DateField()
     check_out = forms.DateField()
+
+
+class ZomatoForm(forms.Form):
+    locationcity = forms.CharField()
+    category = forms.ChoiceField()
