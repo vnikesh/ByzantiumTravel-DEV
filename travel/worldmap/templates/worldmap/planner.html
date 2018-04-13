@@ -69,7 +69,7 @@
       </script>
       <div id="juicebox-container"></div>
       <div class="container text-center"  style="margin-top:70px;">
-        <button onclick="filterAfterLocation()" class="btn btn-danger">
+        <button onclick="filterAfterLocation()" class="btn btn-danger" id="selector">
           <a href="#maprow">Filter World Map</a>
         </button>
       </div>
@@ -78,23 +78,42 @@
 </div>
 <div class="darkpattern">
 <div class="container">
-<div class="row" id="maprow">
-  <h2>Map<h2>
-    <div class="col-sm-8">
-      <div id="map"></div>
-</div>
-  <div class="container text-center landing">
-    <button type="button" class="btn btn-danger" id="selector"><a>Denver</a></button>
-      <div id="awxWeatherInfo"></div>
-      <button type="button" class="btn btn-danger"><a  href="#transport">Next</a></button>
+  <div class="row rowcon" id="rowmap">
+    <div class="col-sm-12 col-lg-8">
+        <h2>Map</h2>
+          <div id="map"></div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4">
+      <div class="col-sm12" id="forecast" style="visibility: hidden;">
+        <h2>Weather</h2>
+        <p>Forecast for <a id="cityname"></a>: </p><div id=awxWeatherInfo>
+      </div>
+      <div class="rowcon">
+      <div class="col-sm-12" id="longtext">
+      </div>
+    </div>
+    <div class="col-sm-12 text-center" style="padding-top: 15px;">
+      <div class="col-sm-3" id="day1">
+        <p>Tomorrow</p>
+      </div>
+      <div class="col-sm-3" id="day2">
+        <p>2 Days</p>
+      </div>
+      <div class="col-sm-3" id="day3">
+        <p>3 Days</p>
+      </div>
+      <div class="col-sm-3" id="day4">
+        <p>4 Days</p>
+      </div>
+    </div>
+    </div>
   </div>
-</div>
 </div>
 </div>
 <div class="greypattern flight">
   <div class="container">
 <div class="row" id="transport">
-  <div class="col-sm-12">
+  <div class="col-sm-12 col-lg-12">
     <h2>Flights</h2>
     <form method="POST" action="" id="FlightForm">
           {% csrf_token %}
@@ -149,10 +168,10 @@
 </div>
 </div>
 
-<div class="greypattern hotel">
+<div class="darkpattern hotel">
   <div class="container">
 <div class="row" id="hotel">
-  <div class="col-sm-12">
+  <div class="col-sm-12 col-lg-12">
     <h2>Hotels</h2>
     <form method="POST" action="" id="HotelForm">
           {% csrf_token %}
@@ -209,7 +228,7 @@
 
 
 
-<div class="darkpattern">
+<div class="greypattern">
   <div class="container">
 <div class="row" id="chat">
   <div class="col-sm-12">
@@ -230,28 +249,26 @@
     $('#chat').smoothScroll();
     $('#getstarted').smoothScroll();
     $('#category').smoothScroll();
-    $(document).ready(initMap);
 </script>
 <script type="text/javascript">
     $(function () {
         var isMetric = false;
         var language = "en";
-        var apiKey = "hoArfRosT1215";
+        var apiKey = "XwOJOcwfVTOmjjxbG60OUemGyXtQGWiT";
         var awxClearMessages = function() {
-
             $("#awxWeatherInfo").html("...");
             $("#awxWeatherUrl").html("...");
         }
         var awxCityLookUp = function (freeText) {
             awxClearMessages();
-            locationUrl = "http://apidev.accuweather.com/locations/v1/search?q=" + freeText + "&apikey=" + apiKey;
+            locationUrl = "http://dataservice.accuweather.com/locations/v1/cities/search?apikey=" + apiKey + "&q=" + freeText;
             $.ajax({
                 type: "GET",
                 url: locationUrl,
                 dataType: "jsonp",
                 cache: true,                    // Use cache for better reponse times
                 jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
-                danger: function (data) { awxCityLookUpFound(data); }
+                success: function (data) { awxCityLookUpFound(data); }
             });
         };
         var awxCityLookUpFound = function (data) {
@@ -272,37 +289,70 @@
             if(locationKey != null) {
                 awxGetCurrentConditions(locationKey);
             }
-
         };
         var awxGetCurrentConditions = function (locationKey) {
-            currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" +
-                locationKey + ".json?language=" + language + "&apikey=" + apiKey;
+            currentConditionsUrl = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/" +
+                locationKey + "?apikey=" + apiKey ;
+                var wil = [];
+
+                for (var i = 0; i < 45; ++i) {
+                  if (i < 10) {
+                  wil[i] = "https://developer.accuweather.com/sites/default/files/0" + i + "-s.png"
+                } else {
+                  wil[i] = "https://developer.accuweather.com/sites/default/files/" + i + "-s.png"
+                }
+                }
             $.ajax({
                 type: "GET",
                 url: currentConditionsUrl,
                 dataType: "jsonp",
                 cache: true,                    // Use cache for better reponse times
-                jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
-                danger: function (data) {
+                //jsonpCallback: "awxCallback",   // Prevent unique callback name for better reponse times
+                success: function (data) {
                         var html;
-                        if(data && data.length > 0) {
-                            var conditions = data[0];
-                            var temp = isMetric ? conditions.Temperature.Metric : conditions.Temperature.Imperial;
-                            html = "<div id='WeatherTxt'>" + conditions.WeatherText + "</div>" +
-                            "<div id='WeatherTemp'>" + temp.Value + " " + temp.Unit + "</div>" ;
-                        }
-                        else {
-                            html = "N/A";
-                        }
-                    $("#awxWeatherInfo").html(html);
+                        var data = data
+                        var f =  "°" + data.DailyForecasts[0].Temperature.Maximum.Unit
+
+                        var wc1 = data.DailyForecasts[0].Day.Icon
+                        var wc2 = data.DailyForecasts[1].Day.Icon
+                        var wc3 = data.DailyForecasts[2].Day.Icon
+                        var wc4 = data.DailyForecasts[3].Day.Icon
+
+
+
+                        var img1 = "<img src='" + wil[wc1] + "'>"
+                        var img2 = "<img src='" + wil[wc2] + "'>"
+                        var img3 = "<img src='" + wil[wc3] + "'>"
+                        var img4 = "<img src='" + wil[wc4] + "'>"
+                        var longtext = "<h4>" + data.Headline.Text + "</h4>"
+
+                        var temp1 = "<p>Min: " + data.DailyForecasts[0].Temperature.Minimum.Value + f + " Max: " + data.DailyForecasts[0].Temperature.Maximum.Value + f + "</p>";
+                        var temp2 = "<p>Min: " + data.DailyForecasts[1].Temperature.Minimum.Value + f + " Max: " + data.DailyForecasts[1].Temperature.Maximum.Value + f + "</p>";
+                        var temp3 = "<p>Min: " + data.DailyForecasts[2].Temperature.Minimum.Value + f + " Max: " + data.DailyForecasts[2].Temperature.Maximum.Value + f + "</p>";
+                        var temp4 = "<p>Min: " + data.DailyForecasts[3].Temperature.Minimum.Value + f + " Max: " + data.DailyForecasts[3].Temperature.Maximum.Value + f + "</p>";
+
+
+
+                    $("#longtext").append(longtext);
+                    $("#day1").append(img1);
+                    $("#day1").append(temp1);
+                    $("#day2").append(img2);
+                    $("#day2").append(temp2);
+                    $("#day3").append(img3);
+                    $("#day3").append(temp3);
+                    $("#day4").append(img4);
+                    $("#day4").append(temp4);
+
+                    $("#forecast").css("visibility", "visible");
                 }
             });
         };
         $("#selector").click(function () {
-            var text = $("#selector").text();
+            var text = $("#cityname").text();
             awxCityLookUp(text);
         });
     });
 </script>
+<script>  $(document).ready(initMap); </script>
 
 {% endblock %}

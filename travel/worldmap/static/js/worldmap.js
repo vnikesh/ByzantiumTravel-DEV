@@ -168,6 +168,8 @@ function filterAfterLocation(){
     location = location[0].childNodes;
     location = location[0].alt;
     DeleteAllMarkers();
+    var hook = document.getElementById("cityname")
+    hook.innerHTML = location
     for (var i = 0; i < markersNames.length; i++) {
             if (markersNames[i] == location){
             marker = new google.maps.Marker({
@@ -182,6 +184,7 @@ function filterAfterLocation(){
             //do nothing
             }
         }
+
 
 }
 
