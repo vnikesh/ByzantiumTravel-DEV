@@ -369,6 +369,12 @@ function infoBox(nummer){
 
 function addInfoBox(boxText, boxImage){
     var mapText = document.getElementById("wikipediaText");
+    for (var i=boxText.length;i > 0;i--){
+        if (boxText.charAt(i) == "."){
+            boxText = boxText.substring(0, i + 1);
+            break;
+        }
+    }
     mapText.innerHTML = boxText;
 }
 
