@@ -30,7 +30,8 @@ def getLocationText(locationName):
 def plannerGetStarted(request):
     form = forms.FlightForm()
     hotel_form = forms.HotelForm()
-    return render(request, 'worldmap/planner.html', {'hotel_form': hotel_form, 'form': form})
+    zomato_form = forms.ZomatoForm()
+    return render(request, 'worldmap/planner.html', {'hotel_form': hotel_form, 'form': form, 'zomato_form': zomato_form})
 
 
 #Functions to get json strings
