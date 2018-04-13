@@ -12,7 +12,9 @@ body {
   left: 0;
   right: 0;
 }
-
+#forecast {
+  visibility: hidden;
+}
 .darkpattern {
   /*background-image: url( '/static/css/images/bg-pattern.png' );*/
   background-color: #2E2F33
@@ -83,6 +85,11 @@ a:focus {
 .row#foot {
   min-height: 0px;
 }
+.row.mapcon {
+  padding: 0;
+  min-height: 0;
+  padding: 0;
+}
 .mapPhotos {
     padding-top: 50px;
     padding-bottom: 100px;
@@ -93,25 +100,13 @@ a:focus {
 .categorybox {
     padding-top: 5%;
 }
-img {
-    max-height: 100%;
-    max-width: 100%;
-}
 .cat {
   max-height: 100vh;
 }
 h2 {
   text-align: center;
 }
-/* #juicebox-container {
-  max-width: 90vw;
-  margin: auto;
-}
-#gallery {
-  height: 100vh;
-  margin-top: 25px;
-} */
-.flight input {
+.flight finput {
   color: black !important;
 }
 .catbutton {
@@ -198,3 +193,11 @@ h2 {
 a {
   color: lightgrey;
 }
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+#map img { max-width: inherit; }
+#weatherplaceholder {padding-top: 15px;}
+#cityname {color: white; font-weight: bold;}
+#cityname:hover {color: white;}
