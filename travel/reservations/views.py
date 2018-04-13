@@ -65,9 +65,8 @@ def getZomato(request):
         if zomato_form.is_valid():
             data2 = zomato_form.cleaned_data
             resp2 = p.search(q=data2['locationcity'])
-            print(resp2)
     return HttpResponse(json.dumps(resp2))
-    
+
 
 # def flights(request):
 #     main_api = "https://api.sandbox.amadeus.com/v1.2/flights/inspiration-search?apikey="

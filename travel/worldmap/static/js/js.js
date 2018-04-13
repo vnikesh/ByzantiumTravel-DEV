@@ -171,17 +171,20 @@ $(document).ready(function() {
 
            document.getElementById('propertyname1').innerHTML = json.results[0].property_name
            document.getElementById('contact1').innerHTML = json.results[0].contacts[0].detail
-           document.getElementById('hprice1').innerHTML = json.results[0]['total_price']['amount']
+            document.getElementById('dprice1').innerHTML = json.results[0]['min_daily_rate']['amount']
+           document.getElementById('tprice1').innerHTML = json.results[0]['total_price']['amount']
            document.getElementById('roomtype1').innerHTML = json.results[0].rooms[0].descriptions
 
            document.getElementById('propertyname2').innerHTML = json.results[1].property_name
            document.getElementById('contact2').innerHTML = json.results[1].contacts[0].detail
-           document.getElementById('hprice2').innerHTML = json.results[1]['total_price']['amount']
+           document.getElementById('dprice2').innerHTML = json.results[0]['min_daily_rate']['amount']
+           document.getElementById('tprice2').innerHTML = json.results[1]['total_price']['amount']
            document.getElementById('roomtype2').innerHTML = json.results[1].rooms[0].descriptions
 
            document.getElementById('propertyname3').innerHTML = json.results[2].property_name
            document.getElementById('contact3').innerHTML = json.results[2].contacts[0].detail
-           document.getElementById('hprice3').innerHTML = json.results[2]['total_price']['amount']
+           document.getElementById('dprice3').innerHTML = json.results[0]['min_daily_rate']['amount']
+           document.getElementById('tprice3').innerHTML = json.results[2]['total_price']['amount']
            document.getElementById('roomtype3').innerHTML = json.results[2].rooms[0].descriptions
 
         });
@@ -192,24 +195,29 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#ZomatoForm').submit(function(e){
-        $.post('/getZomato/', $(this).serialize(), function(data1){
-            var json = JSON.parse(data1);
+        $.post('/getZomato/', $(this).serialize(), function(data2){
+            var json = JSON.parse(data2);
 
-           document.getElementById('restaraunt1').innerHTML = json.results[0].property_name
-           document.getElementById('cuisine1').innerHTML = json.results[0].contacts[0].detail
-           document.getElementById('rating1').innerHTML = json.results[0]['total_price']['amount']
-           document.getElementById('images1').innerHTML = json.results[0].rooms[0].descriptions
+           document.getElementById('restaraunt1').innerHTML = json.restaurants[0]['restaurant']['name']
+           document.getElementById('cuisine1').innerHTML = json.restaurants[0]['restaurant']['cuisines']
+           document.getElementById('avg1').innerHTML = json.restaurants[0]['restaurant']['average_cost_for_two']
+           document.getElementById('rating1').innerHTML = json.restaurants[0]['restaurant']['user_rating']['aggregate_rating']
+           document.getElementById('images1').innerHTML = json.restaurants[0]['restaurant']['photos_url']
+           document.getElementById('menu1').innerHTML = json.restaurants[0]['restaurant']['menu_url']
 
-           document.getElementById('restaraunt2').innerHTML = json.results[1].property_name
-           document.getElementById('cuisine2').innerHTML = json.results[1].contacts[0].detail
-           document.getElementById('rating2').innerHTML = json.results[1]['total_price']['amount']
-           document.getElementById('images2').innerHTML = json.results[1].rooms[0].descriptions
+           document.getElementById('restaraunt2').innerHTML = json.restaurants[1]['restaurant']['name']
+           document.getElementById('cuisine2').innerHTML = json.restaurants[1]['restaurant']['cuisines']
+           document.getElementById('avg2').innerHTML = json.restaurants[1]['restaurant']['average_cost_for_two']
+           document.getElementById('rating2').innerHTML = json.restaurants[1]['restaurant']['user_rating']['aggregate_rating']
+           document.getElementById('images2').innerHTML = json.restaurants[1]['restaurant']['photos_url']
+           document.getElementById('menu2').innerHTML = json.restaurants[1]['restaurant']['menu_url']
 
-           document.getElementById('restaraunt3').innerHTML = json.results[2].property_name
-           document.getElementById('cuisine3').innerHTML = json.results[2].contacts[0].detail
-           document.getElementById('rating3').innerHTML = json.results[2]['total_price']['amount']
-           document.getElementById('images3').innerHTML = json.results[2].rooms[0].descriptions
-
+           document.getElementById('restaraunt3').innerHTML = json.restaurants[2]['restaurant']['name']
+           document.getElementById('cuisine3').innerHTML = json.restaurants[2]['restaurant']['cuisines']
+           document.getElementById('avg3').innerHTML = json.restaurants[2]['restaurant']['average_cost_for_two']
+           document.getElementById('rating3').innerHTML = json.restaurants[2]['restaurant']['user_rating']['aggregate_rating']
+           document.getElementById('images3').innerHTML = json.restaurants[2]['restaurant']['photos_url']
+           document.getElementById('menu3').innerHTML = json.restaurants[2]['restaurant']['menu_url']
         });
         e.preventDefault();
     });
