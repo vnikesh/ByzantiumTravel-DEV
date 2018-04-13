@@ -37,10 +37,10 @@ var map;
 function initiate(){
 DenverString = '<p class="infoWindow">Denver, Capitol of Colorado!</p>';
 SanFranString = '<p class="infoWindow">San Francisco, Tech Base of the US!</p>';
-OmahaString = '<p class="infoWindow">Denver, Gateway to the West!</p>';
-NewYorkString = '<p class="infoWindow">Denver, Big Apple!</p>';
-YosemiteString = '<p class="infoWindow">Denver, Best National Park!</p>';
-YellowstoneString = '<p class="infoWindow">Denver, Wyomings Treasure!</p>';
+OmahaString = '<p class="infoWindow">Omaha, Gateway to the West!</p>';
+NewYorkString = '<p class="infoWindow">New York, Big Apple!</p>';
+YosemiteString = '<p class="infoWindow">Yosemite, Best National Park!</p>';
+YellowstoneString = '<p class="infoWindow">Yellowstone, Wyomings Treasure!</p>';
 SantaMonicaString = '<p class="infoWindow">Santa Monica, End of Route 66!</p>';
 AmarilloString = '<p class="infoWindow">Amarillo, Mid of Route 66!</p>';
 
@@ -112,6 +112,14 @@ function createAllMarkers(){
         });
         markers.push(marker);
     }
+     google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
+     google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
+        google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
+        google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
+        google.maps.event.addListener(markers[4],'click',function(){yosemiteInfo();});
+        google.maps.event.addListener(markers[5],'click',function(){yellowstoneInfo();});
+        google.maps.event.addListener(markers[6],'click',function(){santaMonicaInfo();});
+        google.maps.event.addListener(markers[7],'click',function(){amarilloInfo();});
 }
 
 //initialize the map object
@@ -331,16 +339,6 @@ function initMap() {
         });
 
         createAllMarkers();
-        //alert(markers[0]);
-        google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
-        google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
-        google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
-        google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
-        google.maps.event.addListener(markers[4],'click',function(){yosemiteInfo();});
-        google.maps.event.addListener(markers[5],'click',function(){yellowstoneInfo();});
-        google.maps.event.addListener(markers[6],'click',function(){santaMonicaInfo();});
-        google.maps.event.addListener(markers[7],'click',function(){amarilloInfo();});
-
 
 
 }
@@ -394,6 +392,7 @@ function filterAfterLocation(){
 				title: markersNames[i]
             });
             markers.push(marker);
+            uploadLocation(markersNames[i]);
             } else {
             //do nothing
             }
@@ -430,6 +429,8 @@ function NatureMarkers(){
 				title: markersNames[5]
         });
     markers.push(markerYellowstone);
+        google.maps.event.addListener(markers[0],'click',function(){yosemiteInfoFiltered();});
+        google.maps.event.addListener(markers[1],'click',function(){yellowstoneInfoFiltered();});
 }
 
 function cityMarkers(){
@@ -491,7 +492,8 @@ function RoadMarkers(){
 				title: markersNames[7]
         });
     markers.push(markerAma);
-
+    google.maps.event.addListener(markers[0],'click',function(){santaMonicaInfoFiltered();});
+        google.maps.event.addListener(markers[1],'click',function(){amarilloInfoFiltered();});
 }
 
 function AllMarkers(){
@@ -539,12 +541,26 @@ function yosemiteInfo() {
                     infowindowYosemite.open(map, markers[4]);
                     infoBox('Yosemite');
 }
+function yosemiteInfoFiltered() {
+
+                    map.setZoom(11);
+                    map.setCenter(markers[0].getPosition());
+                    infowindowYosemite.open(map, markers[0]);
+                    infoBox('Yosemite');
+}
 
 function yellowstoneInfo() {
 
                     map.setZoom(11);
                     map.setCenter(markers[5].getPosition());
                     infowindowYellowstone.open(map, markers[5]);
+                    infoBox('Yellowstone');
+}
+function yellowstoneInfoFiltered() {
+
+                    map.setZoom(11);
+                    map.setCenter(markers[1].getPosition());
+                    infowindowYellowstone.open(map, markers[1]);
                     infoBox('Yellowstone');
 }
 
@@ -556,10 +572,25 @@ function santaMonicaInfo() {
                     infoBox('Route66 SantaMonica');
 }
 
+function santaMonicaInfoFiltered() {
+
+                    map.setZoom(11);
+                    map.setCenter(markers[0].getPosition());
+                    infowindowSantaMonica.open(map, markers[0]);
+                    infoBox('Route66 SantaMonica');
+}
+
 function amarilloInfo() {
 
                     map.setZoom(11);
                     map.setCenter(markers[7].getPosition());
                     infowindowAmarillo.open(map, markers[7]);
+                    infoBox('Route66 Amarillo');
+}
+function amarilloInfoFiltered() {
+
+                    map.setZoom(11);
+                    map.setCenter(markers[1].getPosition());
+                    infowindowAmarillo.open(map, markers[1]);
                     infoBox('Route66 Amarillo');
 }
