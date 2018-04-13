@@ -201,8 +201,9 @@
         <th scope="col">#</th>
         <th scope="col">Property Name</th>
         <th scope="col">Contact</th>
-        <th scope="col">Price</th>
-        <th scope="col">Room Type</th>
+        <th scope="col">Daily Price</th>
+        <th scope="col">Total Price</th>
+        <th scope="col">Description</th>
       </tr>
     </thead>
     <tbody>
@@ -245,7 +246,6 @@
     <form method="POST" action="" id="ZomatoForm">
           {% csrf_token %}
           Location {{ zomato_form.locationcity }}
-
 
       <input type="submit" class="btn btn-danger" value="Search Restaraunts" />
     </form>

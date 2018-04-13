@@ -172,17 +172,43 @@ $(document).ready(function() {
            document.getElementById('propertyname1').innerHTML = json.results[0].property_name
            document.getElementById('contact1').innerHTML = json.results[0].contacts[0].detail
            document.getElementById('hprice1').innerHTML = json.results[0]['total_price']['amount']
-           document.getElementById('roomtype1').innerHTML = json.results[0].rooms[0].room_type_info[room_type]
+           document.getElementById('roomtype1').innerHTML = json.results[0].rooms[0].descriptions
 
-           // document.getElementById('propertyname2').innerHTML = json.results[1].property_name
-           // document.getElementById('contact2').innerHTML = json.results[1].contacts[0].detail
-           // document.getElementById('hprice2').innerHTML = json.results[1].total_price[0]
-           // document.getElementById('roomtype2').innerHTML = json.results[1].rooms[0].room_type_info[0]
-           //
-           // document.getElementById('propertyname3').innerHTML = json.results[2].property_name
-           // document.getElementById('contact3').innerHTML = json.results[1].contacts[0].detail
-           // document.getElementById('hprice3').innerHTML = json.results[1].total_price[amount]
-           // document.getElementById('roomtype3').innerHTML = json.results[1].rooms[0].room_type_info[room_type]
+           document.getElementById('propertyname2').innerHTML = json.results[1].property_name
+           document.getElementById('contact2').innerHTML = json.results[1].contacts[0].detail
+           document.getElementById('hprice2').innerHTML = json.results[1]['total_price']['amount']
+           document.getElementById('roomtype2').innerHTML = json.results[1].rooms[0].descriptions
+
+           document.getElementById('propertyname3').innerHTML = json.results[2].property_name
+           document.getElementById('contact3').innerHTML = json.results[2].contacts[0].detail
+           document.getElementById('hprice3').innerHTML = json.results[2]['total_price']['amount']
+           document.getElementById('roomtype3').innerHTML = json.results[2].rooms[0].descriptions
+
+        });
+        e.preventDefault();
+    });
+});
+
+
+$(document).ready(function() {
+    $('#ZomatoForm').submit(function(e){
+        $.post('/getZomato/', $(this).serialize(), function(data1){
+            var json = JSON.parse(data1);
+
+           document.getElementById('restaraunt1').innerHTML = json.results[0].property_name
+           document.getElementById('cuisine1').innerHTML = json.results[0].contacts[0].detail
+           document.getElementById('rating1').innerHTML = json.results[0]['total_price']['amount']
+           document.getElementById('images1').innerHTML = json.results[0].rooms[0].descriptions
+
+           document.getElementById('restaraunt2').innerHTML = json.results[1].property_name
+           document.getElementById('cuisine2').innerHTML = json.results[1].contacts[0].detail
+           document.getElementById('rating2').innerHTML = json.results[1]['total_price']['amount']
+           document.getElementById('images2').innerHTML = json.results[1].rooms[0].descriptions
+
+           document.getElementById('restaraunt3').innerHTML = json.results[2].property_name
+           document.getElementById('cuisine3').innerHTML = json.results[2].contacts[0].detail
+           document.getElementById('rating3').innerHTML = json.results[2]['total_price']['amount']
+           document.getElementById('images3').innerHTML = json.results[2].rooms[0].descriptions
 
         });
         e.preventDefault();
