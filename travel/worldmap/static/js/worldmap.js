@@ -470,6 +470,10 @@ function cityMarkers(){
 				title: markersNames[3]
         });
     markers.push(markerNewYork);
+    google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
+        google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
+        google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
+        google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
 }
 
 function RoadMarkers(){
