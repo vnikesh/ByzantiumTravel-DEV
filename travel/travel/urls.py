@@ -10,3 +10,4 @@ urlpatterns = [
     url(r'', include('reservations.urls', namespace='reservations')),
     url(r'', include('chatapp.urls', namespace='chatapp')),
 ]
+LOGIN_REDIRECT_URL = 'home'
