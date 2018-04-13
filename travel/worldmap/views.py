@@ -27,10 +27,10 @@ def getLocationText(locationName):
     return page_py.summary[0:500]
 
 @login_required
-def plannerGetStarted (request):
+def plannerGetStarted(request):
     form = forms.FlightForm()
-    hform = forms.HotelForm()
-    return render(request, 'worldmap/planner.html', {'form': form, 'hform': hform})
+    hotel_form = forms.HotelForm()
+    return render(request, 'worldmap/planner.html', {'hotel_form': hotel_form, 'form': form})
 
 
 #Functions to get json strings

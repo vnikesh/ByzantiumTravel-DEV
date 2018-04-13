@@ -13,6 +13,8 @@ from amadeus import Flights
 from amadeus import Hotels
 from django.http import HttpResponse, HttpResponseRedirect
 from django.http.response import JsonResponse
+from pyzomato import Pyzomato
+
 
 # Create your views here.
 #
@@ -27,6 +29,7 @@ from django.http.response import JsonResponse
 #         hform = forms.HotelForm()
 #         return render(request, 'hotels.html',
 #                  {'reservations': hotels})
+
 
 def getFlights(request):
     flights = Flights('Zt0AY8d5B9UA7ERLccCjiGF6l6gpcUoS')
@@ -47,14 +50,14 @@ def getFlights(request):
 def getHotels(request):
     hotels = Hotels('Zt0AY8d5B9UA7ERLccCjiGF6l6gpcUoS')
     if request.method == 'POST':
-        hform = HotelForm(request.POST)
-        if hform.is_valid():
-            data = hform.cleaned_data
-            resp1 = hotels.search_airport(location=data['location'],
-                                         check_in=data['checkin'],
-                                         check_out=data['checkout'])
-            print(resp1)
+        hotel_form = HotelForm(request.POST)
+        if hotel_form.is_valid():
+            data1 = hotel_form.cleaned_data
+            resp1 = hotels.search_airport(location=data1['location'],
+                                         check_in=data1['check_in'],
+                                         check_out=data1['check_out'])
         return HttpResponse(json.dumps(resp1))
+
 
 
 # def flights(request):

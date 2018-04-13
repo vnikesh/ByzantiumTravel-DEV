@@ -9,5 +9,5 @@ class FlightForm(forms.Form):
 
 class HotelForm(forms.Form):
     location = forms.CharField()
-    checkin = forms.DateField()
-    checkout = forms.DateField()
+    check_in = forms.DateField()
+    check_out = forms.DateField()
