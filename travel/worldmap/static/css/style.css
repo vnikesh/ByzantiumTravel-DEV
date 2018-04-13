@@ -188,14 +188,13 @@ h2 {
 }
 /*text*/
 .text-white,.text-white-hover:hover{color:#fff!important}
-/*fontcolor*/
 .light-grey {color:#000!important;background-color:#E6E9ED!important}
 a {
   color: lightgrey;
 }
 img {
     max-width: 100%;
-  
+
 }
 #map img { max-width: inherit; }
 #weatherplaceholder {padding-top: 15px;}
@@ -206,4 +205,13 @@ img {
 #sectionmap {
   height: auto;
   max-height: none;
+}
+#wikipediaText{ text-align: justify;}
+body .container
+body:nth-child(odd) {
+    background-color: #2E2F33;
+}
+
+body:nth-child(even) {
+    background-color: #3D3E44;
 }
