@@ -369,6 +369,12 @@ function infoBox(nummer){
 
 function addInfoBox(boxText, boxImage){
     var mapText = document.getElementById("wikipediaText");
+    for (var i=boxText.length;i > 0;i--){
+        if (boxText.charAt(i) == "."){
+            boxText = boxText.substring(0, i + 1);
+            break;
+        }
+    }
     mapText.innerHTML = boxText;
 }
 
@@ -470,6 +476,10 @@ function cityMarkers(){
 				title: markersNames[3]
         });
     markers.push(markerNewYork);
+    google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
+        google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
+        google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
+        google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
 }
 
 function RoadMarkers(){

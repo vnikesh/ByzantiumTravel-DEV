@@ -32,6 +32,9 @@
   .jumbotron {
     margin-top: 50%;
   }
+  h2#wikiheader {
+    visibility: none;
+  }
   #gallery {
     /* margin-top: 900px;
     margin-bottom: 100px;*/
