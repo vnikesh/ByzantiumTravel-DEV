@@ -177,13 +177,13 @@ $(document).ready(function() {
 
            document.getElementById('propertyname2').innerHTML = json.results[1].property_name
            document.getElementById('contact2').innerHTML = json.results[1].contacts[0].detail
-           document.getElementById('dprice2').innerHTML = json.results[0]['min_daily_rate']['amount']
+           document.getElementById('dprice2').innerHTML = json.results[1]['min_daily_rate']['amount']
            document.getElementById('tprice2').innerHTML = json.results[1]['total_price']['amount']
            document.getElementById('roomtype2').innerHTML = json.results[1].rooms[0].descriptions
 
            document.getElementById('propertyname3').innerHTML = json.results[2].property_name
            document.getElementById('contact3').innerHTML = json.results[2].contacts[0].detail
-           document.getElementById('dprice3').innerHTML = json.results[0]['min_daily_rate']['amount']
+           document.getElementById('dprice3').innerHTML = json.results[2]['min_daily_rate']['amount']
            document.getElementById('tprice3').innerHTML = json.results[2]['total_price']['amount']
            document.getElementById('roomtype3').innerHTML = json.results[2].rooms[0].descriptions
 
