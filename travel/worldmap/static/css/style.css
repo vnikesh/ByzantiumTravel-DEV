@@ -207,11 +207,3 @@ img {
   max-height: none;
 }
 #wikipediaText{ text-align: justify;}
-body .container
-body:nth-child(odd) {
-    background-color: #2E2F33;
-}
-
-body:nth-child(even) {
-    background-color: #3D3E44;
-}
