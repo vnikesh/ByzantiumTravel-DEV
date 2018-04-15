@@ -82,6 +82,12 @@ a:focus {
     margin: 0;
     padding-bottom: 20px;
 }
+.form-group.row {
+    padding-top: 0;
+    min-height: 0;
+    margin-top: 20px;
+    padding-bottom: 0;
+}
 .row#foot {
   min-height: 0px;
 }
@@ -207,3 +213,6 @@ img {
   max-height: none;
 }
 #wikipediaText{ text-align: justify;}
+label {color: white;}
+.results { margin-top: 25px; visibility: hidden;}
+#myCarousel {max-width: 70%; margin: auto;}

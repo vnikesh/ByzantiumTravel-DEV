@@ -4,7 +4,6 @@
 <!-- <title>Twilio Chat Quickstart</title> -->
 <link rel="shortcut icon" href="//www.twilio.com/marketing/bundles/marketing/img/favicons/favicon.ico">
 <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
- -->
 
 <header style="height:100vh; background-image:url( '/static/css/images/bg-planner.jpeg' );">
 <div class="container">
@@ -129,15 +128,32 @@
     <h2>Flights</h2>
     <form method="POST" action="" id="FlightForm">
           {% csrf_token %}
-          Origin {{ form.origin }}
-		  Destination {{ form.destination }}
-		  Start Date {{ form.startdate }}
+          <div class="form-group row">
+            <label for="origin" class="col-sm-6 col-form-label">Where do you start?</label>
+            <div class="col-sm-6">
+            {{ form.origin }}
+          </div>
+          </div>
+          <div class="form-group row">
+            <label for="destination" class="col-sm-6 col-form-label">Where you wanna go?</label>
+            <div class="col-sm-6">
+            {{ form.destination }}
+          </div>
+          </div>
+          <div class="form-group row">
+            <label for="startdate" class="col-sm-6 col-form-label">When you wanna go?</label>
+            <div class="col-sm-6">
+            {{ form.startdate }}
+          </div>
+          </div>
 
-      <input type="submit" class="btn btn-danger" value="Search Flights" />
+<div class="form-group row">
+      <input type="submit" class="btn btn-danger" value="Search Flights"  onclick="showFlights();">
+    </div>
     </form>
 
   <div>
-    <table class="table">
+    <table class="table results" id="flightResults">
       <thead>
       <tr>
         <th scope="col">#</th>
@@ -173,7 +189,7 @@
     </tbody>
     </table>
   </div>
-  <button type="button" class="btn btn-danger"><a  href="#hotel">Next</a></button>
+  <button type="button" class="btn btn-danger"><a  href="#hotel">Next Step</a></button>
   </div>
 
 </div>
@@ -185,17 +201,61 @@
 <div class="row" id="hotel">
   <div class="col-sm-12 col-lg-12">
     <h2>Hotels</h2>
+    <p>Find a cosy room at your travel destination</p>
+    <img src="">
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="{% static '/images/hotels/hotel1.jpeg' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static '/images/hotels/hotel2.jpeg' %}" alt="">
+        </div>
+
+        <div class="item">
+          <img src="{% static '/images/hotels/hotel3.jpeg' %}" alt="">
+        </div>
+      </div>
+    </div>
+
+
     <form method="POST" action="" id="HotelForm">
           {% csrf_token %}
-          Location {{ hotel_form.location }}
-		  Check-in {{ hotel_form.check_in }}
-		  Check-out {{ hotel_form.check_out }}
-
-      <input type="submit" class="btn btn-danger" value="Search Hotels" />
+          <div class="form-group row">
+            <label for="location" class="col-sm-6 col-form-label">Where are you going?</label>
+            <div class="col-sm-6">
+            {{ hotel_form.location }}
+          </div>
+          </div>
+          <div class="form-group row">
+            <label for="check_in" class="col-sm-6 col-form-label">When do you arrive?</label>
+            <div class="col-sm-6">
+            {{ hotel_form.check_in }}
+          </div>
+          </div>
+          <div class="form-group row">
+            <label for="check_out" class="col-sm-6 col-form-label">When do you leave?</label>
+            <div class="col-sm-6">
+            {{ hotel_form.check_out }}
+          </div>
+          </div>
+<div class="form-group row">
+      <input type="submit" class="btn btn-danger" value="Search Hotels"  onclick="showHotels();" />
+    </div>
     </form>
 
   <div>
-    <table class="table">
+    <table class="table results" id="hotelResults">
       <thead>
       <tr>
         <th scope="col">#</th>
@@ -234,27 +294,46 @@
     </tbody>
     </table>
   </div>
-  <button type="button" class="btn btn-danger"><a  href="#zomato">Next</a></button>
+  <button type="button" class="btn btn-danger"><a  href="#zomato">Next Step</a></button>
   </div>
 </div>
 </div>
 </div>
 
 
-<div class="darkpattern zomato">
+<div class="greypattern zomato">
   <div class="container">
 <div class="row" id="zomato">
   <div class="col-sm-12 col-lg-12">
     <h2>Restaraunts</h2>
+    <p>Find the Top 3 restaurants for your travel destination</p>
     <form method="POST" action="" id="ZomatoForm">
           {% csrf_token %}
-          Location {{ zomato_form.locationcity }}
-
-      <input type="submit" class="btn btn-danger" value="Search Restaraunts" />
+        <div class="form-group row">
+          <label for="keyword" class="col-sm-6 col-form-label">What kind of restaurants are you looking for?</label>
+          <div class="col-sm-6">
+          {{ zomato_form.locationcity }}
+        </div>
+        </div>
+        <div class="form-group row">
+          <label for="keyword" class="col-sm-6 col-form-label">LAT</label>
+          <div class="col-sm-6">
+            FORM FIELD
+        </div>
+        </div>
+        <div class="form-group row">
+          <label for="keyword" class="col-sm-6 col-form-label">LON</label>
+          <div class="col-sm-6">
+            FORM FIELD
+        </div>
+        </div>
+        <div class="form-group row">
+          <input type="submit" class="btn btn-danger" value="Search Restaraunts" onclick="showRestaurants();"/>
+        </div>
     </form>
 
   <div>
-    <table class="table">
+    <table class="table results" id="restaurantResults">
       <thead>
       <tr>
         <th scope="col">#</th>
@@ -262,7 +341,6 @@
         <th scope="col">Cuisines</th>
         <th scope="col">Average Cost</th>
         <th scope="col">Rating</th>
-        <th scope="col">Images Link</th>
         <th scope="col">Menu Link</th>
       </tr>
     </thead>
@@ -273,8 +351,7 @@
         <td id="cuisine1"></td>
         <td id="avg1"></td>
         <td id="rating1"></td>
-        <td id="images1"></td>
-        <td id="menu1"></td>
+        <td><button type="button" class=" btn btn-danger" ><a id="menu1" target="_blank">See Menu</a></td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -282,8 +359,7 @@
         <td id="cuisine2"></td>
         <td id="avg2"></td>
         <td id="rating2"></td>
-        <td id="images2"></td>
-        <td id="menu2"></td>
+        <td><button type="button" class=" btn btn-danger" ><a id="menu2" target="_blank">See Menu</a></td>
       </tr>
       <tr>
         <th scope="row">3</th>
@@ -291,20 +367,19 @@
         <td id="cuisine3"></td>
         <td id="avg3"></td>
         <td id="rating3"></td>
-        <td id="images3"></td>
-        <td id="menu3"></td>
+        <td><button type="button" class=" btn btn-danger" ><a id="menu3" target="_blank">See Menu</a></td>
       </tr>
     </tbody>
     </table>
   </div>
-  <button type="button" class="btn btn-danger"><a  href="#chat">Next</a></button>
+  <button type="button" class="btn btn-danger"><a  href="#chat">Next Step</a></button>
   </div>
 </div>
 </div>
 </div>
 
 
-<div class="greypattern" class="chat">
+<div class="darkpattern" class="chat">
   <div class="container">
 <div class="row" id="chat">
   <div class="col-sm-12">
@@ -312,7 +387,7 @@
       <div class="row">
         <section id="chatsec">
           <div id="messages" class="pre-scrollable"></div>
-          <input id="chat-input" type="text" placeholder="Type message ..." autofocus/>
+          <input id="chat-input" type="text" placeholder="Type message ..." />
         </section>
   </div>
   </div>

@@ -64,7 +64,7 @@ def getZomato(request):
         zomato_form = ZomatoForm(request.POST)
         if zomato_form.is_valid():
             data2 = zomato_form.cleaned_data
-            resp2 = p.search(q=data2['locationcity'])
+            resp2 = p.search(q=data2['locationcity'], lat='41.277072', lon='-96.060682' ,radius='25000', count='3', sort='rating')
     return HttpResponse(json.dumps(resp2))
 
 

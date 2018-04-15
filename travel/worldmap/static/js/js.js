@@ -202,23 +202,35 @@ $(document).ready(function() {
            document.getElementById('cuisine1').innerHTML = json.restaurants[0]['restaurant']['cuisines']
            document.getElementById('avg1').innerHTML = json.restaurants[0]['restaurant']['average_cost_for_two']
            document.getElementById('rating1').innerHTML = json.restaurants[0]['restaurant']['user_rating']['aggregate_rating']
-           document.getElementById('images1').innerHTML = json.restaurants[0]['restaurant']['photos_url']
-           document.getElementById('menu1').innerHTML = json.restaurants[0]['restaurant']['menu_url']
+           var menu1 = document.getElementById('menu1')
+           menu1.setAttribute("href", json.restaurants[0]['restaurant']['menu_url'] )
 
            document.getElementById('restaraunt2').innerHTML = json.restaurants[1]['restaurant']['name']
            document.getElementById('cuisine2').innerHTML = json.restaurants[1]['restaurant']['cuisines']
            document.getElementById('avg2').innerHTML = json.restaurants[1]['restaurant']['average_cost_for_two']
            document.getElementById('rating2').innerHTML = json.restaurants[1]['restaurant']['user_rating']['aggregate_rating']
-           document.getElementById('images2').innerHTML = json.restaurants[1]['restaurant']['photos_url']
-           document.getElementById('menu2').innerHTML = json.restaurants[1]['restaurant']['menu_url']
+           var menu2 = document.getElementById('menu2')
+           menu2.setAttribute("href", json.restaurants[1]['restaurant']['menu_url'] )
 
            document.getElementById('restaraunt3').innerHTML = json.restaurants[2]['restaurant']['name']
            document.getElementById('cuisine3').innerHTML = json.restaurants[2]['restaurant']['cuisines']
            document.getElementById('avg3').innerHTML = json.restaurants[2]['restaurant']['average_cost_for_two']
            document.getElementById('rating3').innerHTML = json.restaurants[2]['restaurant']['user_rating']['aggregate_rating']
-           document.getElementById('images3').innerHTML = json.restaurants[2]['restaurant']['photos_url']
-           document.getElementById('menu3').innerHTML = json.restaurants[2]['restaurant']['menu_url']
+           var menu3 = document.getElementById('menu3')
+           menu3.setAttribute("href", json.restaurants[2]['restaurant']['menu_url'] )
         });
         e.preventDefault();
     });
 });
+function showRestaurants(){
+  var x = document.getElementById("restaurantResults")
+  x.style.visibility ="visible";
+}
+function showFlights(){
+  var x = document.getElementById("flightResults")
+  x.style.visibility ="visible";
+}
+function showHotels(){
+  var x = document.getElementById("hotelResults")
+  x.style.visibility ="visible";
+}
