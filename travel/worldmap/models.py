@@ -8,6 +8,7 @@ class Region (models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=500, null=False)
 
+
 class Type (models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=500, null=False)
