@@ -8,19 +8,21 @@ class Region (models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=500, null=False)
 
+class Type (models.Model):
+    name = models.CharField(max_length=100, null=False)
+    description = models.CharField(max_length=500, null=False)
 
+    def __str__(self):
+        return self.name
 
 class Location (models.Model):
     name = models.CharField(max_length=200, null=False)
-    long = models.DecimalField(max_digits=50, decimal_places=2, null=False)
-    lat = models.DecimalField(max_digits=50, decimal_places=2, null=False)
-    type = models.CharField(max_length=200, null=False)
+    lng = models.DecimalField(max_digits=50, decimal_places=7, null=False)
+    lat = models.DecimalField(max_digits=50, decimal_places=7, null=False)
+    description = models.CharField(max_length=500, null=False)
+    type = models.ForeignKey(Type, related_name='region')
     rank = models.IntegerField(null=True)
     region = models.ForeignKey(Region, related_name='region')
-
-
-
-
 
 
 class Visitor (models.Model):
