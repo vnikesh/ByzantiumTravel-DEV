@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import json
 from . import forms
+from worldmap.models import Region, Type, Location
 
 #For the wikipedia entries
 import wikipediaapi
@@ -50,4 +51,15 @@ def locationInformation(request):
             text = getLocationText(location)
             return HttpResponse(text) # if everything is OK
     # nothing went well
+    return HttpResponse('FAIL!!!!!')
+
+#Function to grab lng and lat for a specific location
+def getLngLat(request):
+    if request.method == 'POST':
+        if 'location' in request.POST:
+            location = request.POST['location']
+            locObject = Location.objects.get(name=location)
+            data = [{"lng": locObject.lng, "lat": locObject.lat}]
+            return HttpResponse(data)
+
     return HttpResponse('FAIL!!!!!')

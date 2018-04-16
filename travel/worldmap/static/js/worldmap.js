@@ -70,6 +70,15 @@ imgDenver.setAttribute("id", "imageInfoBox");
 
 }
 
+//function to get lng and lat for a specific location
+function getLngLat(name){
+var csrftoken = getCookie('csrftoken');
+var data = {location : name, csrfmiddlewaretoken: csrftoken};
+    $.post('location_lnglat/', data, function(response){
+            alert(data);
+    });
+}
+
 
 
 //function for posting the wanted location to python
@@ -403,6 +412,8 @@ function filterAfterLocation(){
             //do nothing
             }
         }
+
+     getLngLat(location)
 
 
 }
