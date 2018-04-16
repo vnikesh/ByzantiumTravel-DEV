@@ -74,8 +74,8 @@ imgDenver.setAttribute("id", "imageInfoBox");
 function getLngLat(name){
 var csrftoken = getCookie('csrftoken');
 var data = {location : name, csrfmiddlewaretoken: csrftoken};
-    $.post('location_lnglat/', data, function(response){
-            alert(data);
+    $.post('location_LngLat/', data, function(response){
+            alert(response);
     });
 }
 

@@ -23,6 +23,7 @@ class Location (models.Model):
     description = models.CharField(max_length=500, null=False)
     type = models.ForeignKey(Type, related_name='region')
     rank = models.IntegerField(null=True)
+    airportCode = models.CharField(max_length=10, null=False)
     region = models.ForeignKey(Region, related_name='region')
 
 

@@ -46,6 +46,7 @@ class Command(BaseCommand):
                           description='Denver, Capitol of Colorado!',
                           type=city,
                           rank= 10,
+                          airportCode= 'DEN',
                           region=midwest)
         denver.save()
 
@@ -55,6 +56,7 @@ class Command(BaseCommand):
                           description='San Francisco, Tech Base of the US!',
                           type=city,
                           rank=15,
+                           airportCode='SFO',
                           region=west)
         sanfran.save()
 
@@ -64,6 +66,7 @@ class Command(BaseCommand):
                           description='Omaha, Gateway to the West!',
                           type=city,
                           rank=8,
+                          airportCode='OMA',
                           region=midwest)
         omaha.save()
 
@@ -73,6 +76,7 @@ class Command(BaseCommand):
                           description='New York, Big Apple!',
                           type=city,
                           rank=13,
+                          airportCode='NYC',
                           region=northeast)
         newyork.save()
 
@@ -82,6 +86,7 @@ class Command(BaseCommand):
                           description='Yosemite, Best National Park!',
                           type=nature,
                           rank=15,
+                          airportCode='LAX',
                           region=west)
         yosemite.save()
 
@@ -91,6 +96,7 @@ class Command(BaseCommand):
                           description='Yellowstone, Wyomings Treasure!',
                           type=nature,
                           rank=10,
+                          airportCode='DEN',
                           region=midwest)
         yellowstone.save()
 
@@ -100,6 +106,7 @@ class Command(BaseCommand):
                           description='Santa Monica, End of Route 66!',
                           type=roads,
                           rank=15,
+                          airportCode='LAX',
                           region=west)
         santaMonica.save()
 
@@ -109,6 +116,7 @@ class Command(BaseCommand):
                                description='Amarillo, Mid of Route 66!',
                                type=roads,
                                rank=9,
+                               airportCode='AMA',
                                region=south)
         amarillo.save()
 

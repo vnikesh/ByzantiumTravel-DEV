@@ -9,7 +9,7 @@ urlpatterns = [
     url(r'^accounts/profile/$', views.home, name='profile'),
     url(r'^location_json/', views.LocationText.as_view()),
     url(r'^planner/location_information/$', views.locationInformation, name='location'),
-    url(r'^planner/lnglat_information/$', views.getLngLat, name='lnglat'),
+    url(r'^planner/location_LngLat/$', views.getLngLat, name='lnglat'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
