@@ -8,6 +8,8 @@ class Region (models.Model):
     name = models.CharField(max_length=100, null=False)
     description = models.CharField(max_length=500, null=False)
 
+    def __str__(self):
+        return self.name
 
 class Type (models.Model):
     name = models.CharField(max_length=100, null=False)
@@ -26,12 +28,19 @@ class Location (models.Model):
     airportCode = models.CharField(max_length=10, null=False)
     region = models.ForeignKey(Region, related_name='region')
 
+    def __str__(self):
+        return self.name
 
 class Visitor (models.Model):
     name = models.CharField(max_length=200, null=False)
     language = models.CharField(max_length=3, null=False)
 
+    def __str__(self):
+        return self.name
 
 class LocationVisitors (models.Model):
     location = models.ForeignKey(Location, related_name='location')
     visitor = models.ForeignKey(Visitor, related_name='visitor')
+
+    def __str__(self):
+        return self.name
