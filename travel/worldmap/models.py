@@ -31,8 +31,6 @@ class Visitor (models.Model):
     language = models.CharField(max_length=3, null=False)
 
 
-
-
 class LocationVisitors (models.Model):
     location = models.ForeignKey(Location, related_name='location')
     visitor = models.ForeignKey(Visitor, related_name='visitor')
