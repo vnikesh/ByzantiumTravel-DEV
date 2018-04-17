@@ -31,6 +31,19 @@ class Location (models.Model):
     def __str__(self):
         return self.name
 
+    def __iter__(self):
+        return [self.name,
+                self.lng,
+                self.lat,
+                self.description,
+                self.type,
+                self.rank,
+                self.airportCode,
+                self.region]
+
+    def getNameLngLatDescription(self):
+        return [{"name": str(self.name), "lng": str(self.lng), "lat": str(self.lat), "description": str(self.description), "rank": str(self.rank)}]
+
 class Visitor (models.Model):
     name = models.CharField(max_length=200, null=False)
     language = models.CharField(max_length=3, null=False)

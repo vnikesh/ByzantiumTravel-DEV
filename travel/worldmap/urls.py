@@ -11,6 +11,9 @@ urlpatterns = [
     url(r'^planner/location_information/$', views.locationInformation, name='location'),
     url(r'^planner/location_LngLat/$', views.getLngLat, name='lnglat'),
     url(r'^planner/location_AirportCode/$', views.getAirportCode, name='airportCode'),
+    url(r'^planner/locations/$', views.getLocations, name='locations'),
+    url(r'^planner/locationsByType/$', views.getLocationsByType, name='locationsByType'),
+    url(r'^planner/location/$', views.getLocation, name='getLocation'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

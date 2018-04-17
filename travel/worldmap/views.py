@@ -7,6 +7,7 @@ from django.http import HttpResponse
 import json
 from . import forms
 from worldmap.models import Region, Type, Location
+from django.core import serializers
 
 #For the wikipedia entries
 import wikipediaapi
@@ -15,7 +16,7 @@ import wikipediaapi
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import LocationDescriptionSerializer
+from .serializers import LocationDescriptionSerializer, LocationSerializer
 
 
 def home(request):
@@ -71,5 +72,37 @@ def getAirportCode(request):
             location = request.POST['location']
             locObject = Location.objects.get(name=location)
             return HttpResponse(str(locObject.airportCode))
+
+    return HttpResponse('FAIL!!!!!')
+
+#Function to grab all the information about the locations
+def getLocations(request):
+    if request.method == 'POST':
+        locations = Location.objects.all()
+        serializer = LocationSerializer(locations, many=True)
+        return HttpResponse(json.dumps(serializer.data))
+
+    return HttpResponse('FAIL!!!!!')
+
+#Function to grab all the information about the locations
+def getLocation(request):
+    if request.method == 'POST':
+        if 'location' in request.POST:
+            location = request.POST['location']
+            location = Location.objects.get(name=location).getNameLngLatDescription()
+            return HttpResponse(json.dumps(location))
+            #return HttpResponse('test')
+
+    return HttpResponse('FAIL!!!!!')
+
+#Function to grab the airportCode for a specific location
+def getLocationsByType(request):
+    if request.method == 'POST':
+        if 'type' in request.POST:
+            type = request.POST['type']
+            selectedType = Type.objects.get(name=type)
+            locations = Location.objects.filter(type=selectedType)
+            serializer = LocationSerializer(locations, many=True)
+            return HttpResponse(json.dumps(serializer.data))
 
     return HttpResponse('FAIL!!!!!')
