@@ -45,7 +45,7 @@ class Command(BaseCommand):
                           lng='-104.989211',
                           description='Denver, Capitol of Colorado!',
                           type=city,
-                          rank= 10,
+                          rank= 4,
                           airportCode= 'DEN',
                           region=midwest)
         denver.save()
@@ -55,7 +55,7 @@ class Command(BaseCommand):
                           lng='-122.423851',
                           description='San Francisco, Tech Base of the US!',
                           type=city,
-                          rank=15,
+                          rank=5,
                            airportCode='SFO',
                           region=west)
         sanfran.save()
@@ -65,7 +65,7 @@ class Command(BaseCommand):
                           lng='-95.934503',
                           description='Omaha, Gateway to the West!',
                           type=city,
-                          rank=8,
+                          rank=3,
                           airportCode='OMA',
                           region=midwest)
         omaha.save()
@@ -75,7 +75,7 @@ class Command(BaseCommand):
                           lng='-74.005973',
                           description='New York, Big Apple!',
                           type=city,
-                          rank=13,
+                          rank=5,
                           airportCode='NYC',
                           region=northeast)
         newyork.save()
@@ -85,7 +85,7 @@ class Command(BaseCommand):
                           lng='-119.538329',
                           description='Yosemite, Best National Park!',
                           type=nature,
-                          rank=15,
+                          rank=5,
                           airportCode='LAX',
                           region=west)
         yosemite.save()
@@ -95,7 +95,7 @@ class Command(BaseCommand):
                           lng='-110.588455',
                           description='Yellowstone, Wyomings Treasure!',
                           type=nature,
-                          rank=10,
+                          rank=4,
                           airportCode='DEN',
                           region=midwest)
         yellowstone.save()
@@ -105,7 +105,7 @@ class Command(BaseCommand):
                           lng='-118.491191',
                           description='Santa Monica, End of Route 66!',
                           type=roads,
-                          rank=15,
+                          rank=5,
                           airportCode='LAX',
                           region=west)
         santaMonica.save()
@@ -115,7 +115,7 @@ class Command(BaseCommand):
                                lng='-101.831297',
                                description='Amarillo, Mid of Route 66!',
                                type=roads,
-                               rank=9,
+                               rank=3,
                                airportCode='AMA',
                                region=south)
         amarillo.save()

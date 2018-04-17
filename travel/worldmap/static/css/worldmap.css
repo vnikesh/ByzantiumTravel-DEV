@@ -36,3 +36,11 @@ color: black;
 #wikipediaText{
 color:white;
 }
+
+#scoreboard{
+    display: none;
+}
+
+.checked {
+    color: orange;
+}

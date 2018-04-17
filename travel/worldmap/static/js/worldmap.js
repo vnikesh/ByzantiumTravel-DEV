@@ -152,10 +152,10 @@ function infoBox(nummer){
                          break;
         case "Route66 Amarillo": uploadLocation("Amarillo");
                          break;
-        default: alert("Default Anweisung in der switch Anweisung for InfoBox!");
+        default: alert("Default case in the switch for InfoBox!");
        }
 }
-
+//function for adding the wikipediaText to the page
 function addInfoBox(boxText){
     var mapText = document.getElementById("wikipediaText");
     for (var i=boxText.length;i > 0;i--){
@@ -226,6 +226,47 @@ function FinalFilterAfterLocation(markerInfo){
      //setting the right airportcode for flight and hotel
     getAirportCode(locationName);
 
+    //setting the rank of the location
+    updateStars(markerInfo[0].rank);
+    document.getElementById("scoreboard").style.display = "block";
+
+}
+
+//function for setting the star ratings
+function updateStars(rank){
+     switch (rank){
+        case "1": document.getElementById("star1").classList.add('checked');
+                document.getElementById("star2").classList.remove('checked');
+                document.getElementById("star3").classList.remove('checked');
+                document.getElementById("star4").classList.remove('checked');
+                document.getElementById("star5").classList.remove('checked');
+                break;
+        case "2": document.getElementById("star1").classList.add('checked');
+                document.getElementById("star2").classList.add('checked');
+                document.getElementById("star3").classList.remove('checked');
+                document.getElementById("star4").classList.remove('checked');
+                document.getElementById("star5").classList.remove('checked');
+                break;
+        case "3": document.getElementById("star1").classList.add('checked');
+                document.getElementById("star2").classList.add('checked');
+                document.getElementById("star3").classList.add('checked');
+                document.getElementById("star4").classList.remove('checked');
+                document.getElementById("star5").classList.remove('checked');
+                break;
+        case "4": document.getElementById("star1").classList.add('checked');
+                document.getElementById("star2").classList.add('checked');
+                document.getElementById("star3").classList.add('checked');
+                document.getElementById("star4").classList.add('checked');
+                document.getElementById("star5").classList.remove('checked');
+                break;
+        case "5": document.getElementById("star1").classList.add('checked');
+                document.getElementById("star2").classList.add('checked');
+                document.getElementById("star3").classList.add('checked');
+                document.getElementById("star4").classList.add('checked');
+                document.getElementById("star5").classList.add('checked');
+                break;
+        default: alert("Default case in the switch for stars ranking!");
+       }
 }
 
 //function that deletes every marker on the map
