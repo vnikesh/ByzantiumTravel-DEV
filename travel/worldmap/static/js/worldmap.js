@@ -2,70 +2,15 @@
 
 var all_Locations;
 
-var DenverText;
-var DenverString;
-var SanFranString;
-var OmahaString;
-var NewYorkString;
-var YosemiteString;
-var YellowstoneString;
-
-var infowindowDenver;
-var infowindowSanFran;
-var infowindowOmaha;
-var infowindowNewYork;
-var infowindowYosemite;
-var infowindowYellowstone;
-
-var latlngDenver;
-var latlngSanFran;
-var latlngOmaha;
-var latlngNewYork;
-var latlngYosemite;
-var latlngYellowstone;
-var latlngSantaMonica;
-var latlngAmarillo;
 
 var testText;
 
 var markers = [];
-var markersNames = ["Denver", "San Francisco", "Omaha", "New York", "Yosemite", "Yellowstone", "Route66 SantaMonica", "Route66 Amarillor"];
-var newMarkersNames = [];
+var markersNames = [];
 var markersPositions;
 
 //the global map object to point to the google map
 var map;
-
-function initiate(){
-    DenverString = '<p class="infoWindow">Denver, Capitol of Colorado!</p>';
-    SanFranString = '<p class="infoWindow">San Francisco, Tech Base of the US!</p>';
-    OmahaString = '<p class="infoWindow">Omaha, Gateway to the West!</p>';
-    NewYorkString = '<p class="infoWindow">New York, Big Apple!</p>';
-    YosemiteString = '<p class="infoWindow">Yosemite, Best National Park!</p>';
-    YellowstoneString = '<p class="infoWindow">Yellowstone, Wyomings Treasure!</p>';
-    SantaMonicaString = '<p class="infoWindow">Santa Monica, End of Route 66!</p>';
-    AmarilloString = '<p class="infoWindow">Amarillo, Mid of Route 66!</p>';
-
-    infowindowDenver = new google.maps.InfoWindow({content: DenverString});
-    infowindowSanFran = new google.maps.InfoWindow({content: SanFranString});
-    infowindowOmaha = new google.maps.InfoWindow({content: OmahaString});
-    infowindowNewYork = new google.maps.InfoWindow({content: NewYorkString});
-    infowindowYosemite = new google.maps.InfoWindow({content: YosemiteString});
-    infowindowYellowstone = new google.maps.InfoWindow({content: YellowstoneString});
-    infowindowSantaMonica = new google.maps.InfoWindow({content: SantaMonicaString});
-    infowindowAmarillo = new google.maps.InfoWindow({content: AmarilloString});
-
-    latlngDenver = new google.maps.LatLng(39.777128, -104.989211);
-    latlngSanFran = new google.maps.LatLng(37.77105,  -122.423851);
-    latlngOmaha = new google.maps.LatLng(41.256537, -95.934503);
-    latlngNewYork = new google.maps.LatLng(40.712775, -74.005973);
-    latlngYosemite = new google.maps.LatLng(37.865101, -119.538329);
-    latlngYellowstone = new google.maps.LatLng(44.427963, -110.588455);
-    latlngSantaMonica = new google.maps.LatLng(34.019454, -118.491191);
-    latlngAmarillo = new google.maps.LatLng(35.221997, -101.831297);
-
-    markersPositions = [latlngDenver, latlngSanFran, latlngOmaha, latlngNewYork, latlngYosemite, latlngYellowstone, latlngSantaMonica, latlngAmarillo];
-}
 
 //function to get lng and lat for a specific location
 function getLngLat(name){
@@ -113,8 +58,10 @@ var csrftoken = getCookie('csrftoken');
 var data = { type : name, csrfmiddlewaretoken: csrftoken};
     $.post('locationsByType/', data, function(response){
             var response = JSON.parse(response);
+            //set the returned locations as a global variable to use it later to create the markers
             all_Locations = response;
             createAllMarkers();
+
     });
 
 }
@@ -160,9 +107,10 @@ function getCookie(name) {
 
 //create all markers on the map
 function createAllMarkers(){
-    markers = [];
-    newMarkersNames = [];
-    //go through all teh locations that were fetched
+    //first delete any marker that might be on the map
+    DeleteAllMarkers()
+
+    //go through all the locations that were fetched
     for (var i=0;i<all_Locations.length;i++){
         latlngPosition = new google.maps.LatLng(all_Locations[i].lat, all_Locations[i].lng);
         marker = new google.maps.Marker({
@@ -172,20 +120,15 @@ function createAllMarkers(){
 				animation: google.maps.Animation.DROP,
 				title: all_Locations[i].name
         });
-        name = all_Locations[i].name;
-        google.maps.event.addListener(marker,'click',function(){filterAfterLocation(name);});
+        //push marker itself and marker name into two global available arrays
+        markersNames.push(all_Locations[i].name);
         markers.push(marker);
-        newMarkersNames.push(all_Locations[i].name);
-    }
+        //add the click function to the markers
+        google.maps.event.addListener(marker,'click',function(){filterAfterLocation(markersNames[i]);});
 
-    /*google.maps.event.addListener(markers[0],'click',function(){filterAfterLocation();});
-    google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
-    google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
-    google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
-    google.maps.event.addListener(markers[4],'click',function(){yosemiteInfo();});
-    google.maps.event.addListener(markers[5],'click',function(){yellowstoneInfo();});
-    google.maps.event.addListener(markers[6],'click',function(){santaMonicaInfo();});
-    google.maps.event.addListener(markers[7],'click',function(){amarilloInfo();});*/
+    }
+    //center the map on the middle again
+    map.setCenter({lat: 41.247144, lng: -96.016774});
 }
 
 
@@ -199,7 +142,7 @@ function infoBox(nummer){
                         break;
         case "Omaha": uploadLocation("Omaha");
                         break;
-        case "New York": uploadLocation("New York");
+        case "New York": uploadLocation("New York City");
                         break;
         case "Yosemite": uploadLocation("Yosemite");
                         break;
@@ -250,7 +193,6 @@ function filterAfterLocation(name){
 function FinalFilterAfterLocation(markerInfo){
     locationName = markerInfo[0].name;
     markers = [];
-    newMarkersNames = [];
 
     //flo code
     var hook = document.getElementById("cityname")
@@ -267,9 +209,8 @@ function FinalFilterAfterLocation(markerInfo){
         animation: google.maps.Animation.DROP,
         title: locationName
     });
-
+    //push the new marker into the global array
     markers.push(marker);
-    newMarkersNames.push(locationName);
 
     //zoom the map
     map.setZoom(11);
@@ -287,113 +228,18 @@ function FinalFilterAfterLocation(markerInfo){
 
 }
 
+//function that deletes every marker on the map
 function DeleteAllMarkers(){
     for (var i=0;i<markers.length;i++){
         markers[i].setMap(null);
         markers[i] = null;
     }
     markers = [];
+
+    //delete the saved names of markers
+    markersNames = [];
 }
 
-function NatureMarkers(){
-    DeleteAllMarkers();
-
-    markerYosemite = new google.maps.Marker({
-                position: markersPositions[4],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[4]
-        });
-    markers.push(markerYosemite);
-
-    markerYellowstone = new google.maps.Marker({
-                position: markersPositions[5],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[5]
-        });
-    markers.push(markerYellowstone);
-        google.maps.event.addListener(markers[0],'click',function(){yosemiteInfoFiltered();});
-        google.maps.event.addListener(markers[1],'click',function(){yellowstoneInfoFiltered();});
-}
-
-function cityMarkers(){
-    DeleteAllMarkers();
-
-    markerDenver = new google.maps.Marker({
-                position: markersPositions[0],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[0]
-        });
-    markers.push(markerDenver);
-
-    markerSanFran = new google.maps.Marker({
-                position: markersPositions[1],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[1]
-        });
-    markers.push(markerSanFran);
-    markerOmaha = new google.maps.Marker({
-                position: markersPositions[2],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[2]
-        });
-    markers.push(markerOmaha);
-
-    markerNewYork = new google.maps.Marker({
-                position: markersPositions[3],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[3]
-        });
-    markers.push(markerNewYork);
-    google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
-        google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
-        google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
-        google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
-}
-
-function RoadMarkers(){
-    DeleteAllMarkers();
-
-    markerSanta = new google.maps.Marker({
-                position: markersPositions[6],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[6]
-        });
-    markers.push(markerSanta);
-
-    markerAma = new google.maps.Marker({
-                position: markersPositions[7],
-				map: map,
-				draggable: false,
-				animation: google.maps.Animation.DROP,
-				title: markersNames[7]
-        });
-    markers.push(markerAma);
-    google.maps.event.addListener(markers[0],'click',function(){santaMonicaInfoFiltered();});
-        google.maps.event.addListener(markers[1],'click',function(){amarilloInfoFiltered();});
-}
-
-function AllMarkers(){
-    //first delete all markers
-    DeleteAllMarkers();
-    //then reload every marker, starting with fetching the marker data
-    getLocations();
-    //center the map on the middle again
-    map.setCenter({lat: 41.247144, lng: -96.016774});
-}
 
 function denverInfo() {
 
@@ -490,7 +336,6 @@ function amarilloInfoFiltered() {
 
 //initialize the map object
 function initMap() {
-        initiate();
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 41.247144, lng: -96.016774},

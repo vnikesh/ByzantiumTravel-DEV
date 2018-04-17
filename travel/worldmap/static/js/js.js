@@ -10,7 +10,7 @@ function displayCategory (category) {
                 galleryHeight: "80%",
                 backgroundColor: "transparent"
               });
-              NatureMarkers();
+              getLocationsByType('Nature');
         break;
         case 'Citytrip':
             changeScriptToCity();
@@ -21,7 +21,7 @@ function displayCategory (category) {
                 galleryHeight: "80%",
                 backgroundColor: "transparent"
               });
-              cityMarkers();
+              getLocationsByType('City');
         break;
         case 'Road':
             changeScriptToRoad();
@@ -32,7 +32,7 @@ function displayCategory (category) {
                 galleryHeight: "80%",
                 backgroundColor: "transparent"
               });
-              RoadMarkers();
+              getLocationsByType('Road');
         break;
         case 'All':
         changeScriptToAll();
@@ -43,7 +43,7 @@ function displayCategory (category) {
                 galleryHeight: "80%",
                 backgroundColor: "transparent"
               });
-              AllMarkers();
+              getLocations();
          break;
         default:
         alert ("Category doesn't exist");

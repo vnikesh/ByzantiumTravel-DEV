@@ -18,7 +18,7 @@ def authentication(request):
                     login(request, user)
                     #return HttpResponse('Authenticated ' \
                      #       'successfully')
-                    return HttpResponseRedirect('/home/')
+                    return HttpResponseRedirect('/planner/')
             else:
                 return HttpResponse('Disabled account')
 
