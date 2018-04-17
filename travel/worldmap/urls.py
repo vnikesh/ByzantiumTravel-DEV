@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^location_json/', views.LocationText.as_view()),
     url(r'^planner/location_information/$', views.locationInformation, name='location'),
     url(r'^planner/location_LngLat/$', views.getLngLat, name='lnglat'),
+    url(r'^planner/location_AirportCode/$', views.getAirportCode, name='airportCode'),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

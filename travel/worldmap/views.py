@@ -59,7 +59,17 @@ def getLngLat(request):
         if 'location' in request.POST:
             location = request.POST['location']
             locObject = Location.objects.get(name=location)
-            data = [{"lng": locObject.lng, "lat": locObject.lat}]
-            return HttpResponse(data)
+            data = [{"lng": str(locObject.lng), "lat": str(locObject.lat)}]
+            return HttpResponse(json.dumps(data))
+
+    return HttpResponse('FAIL!!!!!')
+
+#Function to grab the airportCode for a specific location
+def getAirportCode(request):
+    if request.method == 'POST':
+        if 'location' in request.POST:
+            location = request.POST['location']
+            locObject = Location.objects.get(name=location)
+            return HttpResponse(str(locObject.airportCode))
 
     return HttpResponse('FAIL!!!!!')

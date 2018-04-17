@@ -15,3 +15,7 @@ class HotelForm(forms.Form):
 
 class ZomatoForm(forms.Form):
     locationcity = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'keyword', 'placeholder': 'Pizza'}))
+    lngRestaurant = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'lngRestaurant', 'placeholder': 'Long'}))
+    latRestaurant = forms.CharField(
+        widget=forms.TextInput(attrs={'class': 'form-control', 'id': 'latRestaurant', 'placeholder': 'Lat'}))

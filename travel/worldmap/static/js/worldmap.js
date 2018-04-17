@@ -75,7 +75,24 @@ function getLngLat(name){
 var csrftoken = getCookie('csrftoken');
 var data = {location : name, csrfmiddlewaretoken: csrftoken};
     $.post('location_LngLat/', data, function(response){
+            var response = JSON.parse(response);
+            var a = document.getElementById('lngRestaurant');
+            a.value = response[0].lng;
+            var b = document.getElementById('latRestaurant');
+            b.value = response[0].lat;
+    });
+}
+
+//function to get airportCode for a specific location
+function getAirportCode(name){
+var csrftoken = getCookie('csrftoken');
+var data = {location : name, csrfmiddlewaretoken: csrftoken};
+    $.post('location_AirportCode/', data, function(response){
             alert(response);
+            var a = document.getElementById('location');
+            a.value = response;
+            var b = document.getElementById('destination');
+            b.value = response;
     });
 }
 
@@ -121,8 +138,8 @@ function createAllMarkers(){
         });
         markers.push(marker);
     }
-     google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
-     google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
+        google.maps.event.addListener(markers[0],'click',function(){denverInfo();});
+        google.maps.event.addListener(markers[1],'click',function(){sanfranInfo();});
         google.maps.event.addListener(markers[2],'click',function(){omahaInfo();});
         google.maps.event.addListener(markers[3],'click',function(){newYorkInfo();});
         google.maps.event.addListener(markers[4],'click',function(){yosemiteInfo();});
@@ -412,9 +429,11 @@ function filterAfterLocation(){
             //do nothing
             }
         }
+    //setting the data for the lng and lat input fields
+     getLngLat(location);
 
-     getLngLat(location)
-
+     //setting the right airportcode for flight and hotel
+    getAirportCode(location);
 
 }
 

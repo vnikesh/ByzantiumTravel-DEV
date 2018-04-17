@@ -15,3 +15,5 @@ class HotelForm(forms.Form):
 
 class ZomatoForm(forms.Form):
     locationcity = forms.CharField()
+    lngRestaurant = forms.CharField()
+    latRestaurant = forms.CharField()
