@@ -111,7 +111,7 @@ function createAllMarkers(){
     DeleteAllMarkers()
 
     //go through all the locations that were fetched
-    for (var i=0;i<all_Locations.length;i++){
+    for (let i=0;i<all_Locations.length;i++){
         latlngPosition = new google.maps.LatLng(all_Locations[i].lat, all_Locations[i].lng);
         marker = new google.maps.Marker({
                 position: latlngPosition,
