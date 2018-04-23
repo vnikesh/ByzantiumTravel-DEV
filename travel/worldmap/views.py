@@ -106,3 +106,15 @@ def getLocationsByType(request):
             return HttpResponse(json.dumps(serializer.data))
 
     return HttpResponse('FAIL!!!!!')
+
+#Function to update the VisitorInterest table
+def searchUpdate(request):
+    if request.method == 'POST':
+        if 'location' in request.POST:
+            location = request.POST['location']
+            username = request.user.username
+            print (username)
+            location = Location.objects.get(name=location).getNameLngLatDescription()
+
+
+    print('FAIL!!!!!')
