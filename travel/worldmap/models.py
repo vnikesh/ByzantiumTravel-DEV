@@ -44,16 +44,12 @@ class Location (models.Model):
     def getNameLngLatDescription(self):
         return [{"name": str(self.name), "lng": str(self.lng), "lat": str(self.lat), "description": str(self.description), "rank": str(self.rank)}]
 
-class Visitor (models.Model):
+class VisitorInterest (models.Model):
     name = models.CharField(max_length=200, null=False)
-    language = models.CharField(max_length=3, null=False)
-
-    def __str__(self):
-        return self.name
-
-class LocationVisitors (models.Model):
     location = models.ForeignKey(Location, related_name='location')
-    visitor = models.ForeignKey(Visitor, related_name='visitor')
+    locationName = models.CharField(max_length=200, null=False)
+    searches = models.IntegerField(null=True)
+
 
     def __str__(self):
         return self.name

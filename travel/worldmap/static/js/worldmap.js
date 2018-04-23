@@ -88,6 +88,14 @@ var data = {location : name, csrfmiddlewaretoken: csrftoken};
 
 }
 
+//function for posting what the user searched for
+function uploadSearch(name){
+var csrftoken = getCookie('csrftoken');
+var data = {location : name, csrfmiddlewaretoken: csrftoken};
+    $.post('search_update/', data);
+    //no return value necessary
+}
+
 // using jQuery, to get cookie by name
 function getCookie(name) {
     var cookieValue = null;
@@ -230,6 +238,8 @@ function FinalFilterAfterLocation(markerInfo){
     updateStars(markerInfo[0].rank);
     document.getElementById("scoreboard").style.display = "block";
 
+    //update the search history of the user
+    uploadSearch(locationName);
 }
 
 //function for setting the star ratings
@@ -279,100 +289,6 @@ function DeleteAllMarkers(){
 
     //delete the saved names of markers
     markersNames = [];
-}
-
-
-function denverInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[0].getPosition());
-                    infowindowDenver.open(map, markers[0]);
-                    infoBox('Denver');
-}
-
-function sanfranInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[1].getPosition());
-                    infowindowSanFran.open(map, markers[1]);
-                    infoBox('San Francisco');
-}
-
-function omahaInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[2].getPosition());
-                    infowindowOmaha.open(map, markers[2]);
-                    infoBox('Omaha');
-}
-
-function newYorkInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[3].getPosition());
-                    infowindowNewYork.open(map, markers[3]);
-                    infoBox('New York');
-}
-
-function yosemiteInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[4].getPosition());
-                    infowindowYosemite.open(map, markers[4]);
-                    infoBox('Yosemite');
-}
-function yosemiteInfoFiltered() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[0].getPosition());
-                    infowindowYosemite.open(map, markers[0]);
-                    infoBox('Yosemite');
-}
-
-function yellowstoneInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[5].getPosition());
-                    infowindowYellowstone.open(map, markers[5]);
-                    infoBox('Yellowstone');
-}
-function yellowstoneInfoFiltered() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[1].getPosition());
-                    infowindowYellowstone.open(map, markers[1]);
-                    infoBox('Yellowstone');
-}
-
-function santaMonicaInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[6].getPosition());
-                    infowindowSantaMonica.open(map, markers[6]);
-                    infoBox('Route66 SantaMonica');
-}
-
-function santaMonicaInfoFiltered() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[0].getPosition());
-                    infowindowSantaMonica.open(map, markers[0]);
-                    infoBox('Route66 SantaMonica');
-}
-
-function amarilloInfo() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[7].getPosition());
-                    infowindowAmarillo.open(map, markers[7]);
-                    infoBox('Route66 Amarillo');
-}
-function amarilloInfoFiltered() {
-
-                    map.setZoom(11);
-                    map.setCenter(markers[1].getPosition());
-                    infowindowAmarillo.open(map, markers[1]);
-                    infoBox('Route66 Amarillo');
 }
 
 //initialize the map object
