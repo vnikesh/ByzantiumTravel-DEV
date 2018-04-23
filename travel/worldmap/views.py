@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 import json
 from . import forms
-from worldmap.models import Region, Type, Location
+from worldmap.models import Region, Type, Location, VisitorInterest
 from django.core import serializers
 
 #For the wikipedia entries
@@ -113,8 +113,17 @@ def searchUpdate(request):
         if 'location' in request.POST:
             location = request.POST['location']
             username = request.user.username
-            print (username)
-            location = Location.objects.get(name=location).getNameLngLatDescription()
-
+            if VisitorInterest.objects.filter(user=username).exists():
+                if VisitorInterest.objects.filter(user=username).filter(location=location).exists():
+                    object = VisitorInterest.objects.filter(user=username).get(location=location)
+                    object.searches = object.searches + 1
+                    object.save()
+                else:
+                    entry = VisitorInterest(user=username, location=location, searches=1)
+                    entry.save()
+            else:
+                entry =  VisitorInterest(user=username, location=location, searches= 1)
+                entry.save()
+            return HttpResponse('')
 
     print('FAIL!!!!!')
