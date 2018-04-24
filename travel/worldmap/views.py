@@ -8,9 +8,12 @@ import json
 from . import forms
 from worldmap.models import Region, Type, Location, VisitorInterest
 from django.core import serializers
+from django.conf import settings
+from twilio.rest import Client
 
 #For the wikipedia entries
 import wikipediaapi
+import twilio.rest
 
 #For the rest web services
 from rest_framework.views import APIView
@@ -33,7 +36,8 @@ def plannerGetStarted(request):
     form = forms.FlightForm()
     hotel_form = forms.HotelForm()
     zomato_form = forms.ZomatoForm()
-    return render(request, 'worldmap/planner.html', {'hotel_form': hotel_form, 'form': form, 'zomato_form': zomato_form})
+    sms_form = forms.SendSMSForm()
+    return render(request, 'worldmap/planner.html', {'hotel_form': hotel_form, 'form': form, 'zomato_form': zomato_form, 'sms_form': sms_form})
 
 
 #Functions to get json strings
@@ -127,3 +131,26 @@ def searchUpdate(request):
             return HttpResponse('')
 
     print('FAIL!!!!!')
+
+
+#function for writing a sms
+def send_twilio_message(request):
+    #sid = "AC77010b7d86d3a356f80667e6d790c128"
+    #token = "b0fd38a04a4e570bb6d3f35e570a67d4"
+    client = Client(settings.TWILIO_ACCT_SID, settings.TWILIO_AUTH_TOKEN)
+    #client = Client("AC77010b7d86d3a356f80667e6d790c128","b0fd38a04a4e570bb6d3f35e570a67d4")
+    # if request.method == 'POST':
+    #     sms_form = SMSForm(request.POST)
+    #     if sms_form.is_valid():
+    #         data2 = zomato_form.cleaned_data
+    #         resp2 = p.search(q=data2['locationcity'], lat='41.277072', lon='-96.060682', radius='25000', count='3',
+    #                          sort='rating')
+    client.messages.create(
+        body=request.POST['body'],
+        to=request.POST['to_number'],
+        #to='+14026861203',
+        from_='+14028108945'  #settings.TWILIO_PHONE_NUMBER
+    )
+
+    print(request.POST['to_number'])
+    return HttpResponse('');

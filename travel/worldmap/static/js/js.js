@@ -238,6 +238,16 @@ $(document).ready(function() {
         e.preventDefault();
     });
 });
+
+$(document).ready(function() {
+    $('#SMSForm').submit(function(e){
+        $.post('/sendsms/', $(this).serialize(), function(data2){
+            var json = JSON.parse(data2);
+			alert('hi from sms function');
+        });
+        e.preventDefault();
+    });
+});
 function showRestaurants(){
   var x = document.getElementById("restaurantResults")
   x.style.visibility ="visible";

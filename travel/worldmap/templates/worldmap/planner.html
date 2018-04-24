@@ -124,6 +124,8 @@
       </div>
     </div>
 </div>
+  </div>
+</div>
 
 <div class="greypattern flight">
   <div class="container">
@@ -381,9 +383,40 @@
 </div>
 </div>
 </div>
+<div class="darkpattern">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+    <h2>Send SMS</h2>
+      <div id="sms">
+      <form method="POST" action="" id="SMSForm">
+          {% csrf_token %}
+        <div class="form-group row">
+          <label for="keyword" class="col-sm-6 col-form-label">Receiver</label>
+          <div class="col-sm-6">
+          {{ sms_form.to_number }}
+        </div>
+        </div>
+        <div class="form-group row">
+          <label for="keyword" class="col-sm-6 col-form-label">Body</label>
+          <div class="col-sm-6">
+            {{ sms_form.body }}
+        </div>
+        </div>
+
+        <div class="form-group row">
+          <input type="submit" class="btn btn-danger" value="Send SMS" onclick=""/>
+        </div>
+    </form>
+    </div>
+    </div>
+      </div>
+  </div>
+</div>
+  </div>
 
 
-<div class="darkpattern" class="chat">
+<div class="greypattern" class="chat">
   <div class="container">
 <div class="row" id="chat">
   <div class="col-sm-12">
